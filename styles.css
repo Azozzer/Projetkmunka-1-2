@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Lora', serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,42 +22,122 @@ header {
     justify-content: space-between; /* Térköz a kép és a középső szöveg között */
 }
 
+h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
 .logo {
     width: 50px; /* Kép szélessége */
     height: 50px; /* Kép magassága */
-    margin-right: 15px; /* Térköz a kép és a szöveg között */
+    margin-right: 20px;
 }
 
-h1 {
-    flex: 1; /* Szöveg középre igazítása */
-    text-align: center; /* Szöveg középre igazítása */
-    margin: 0; /* Nincs margó a szövegnél */
+nav {
+    display: flex;
+    gap: 30px; /* Térköz a menüpontok között */
+}
+
+.menu-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Lora', serif;
+}
+
+.menu-item:hover {
+    text-decoration: underline;
 }
 
 main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 80px; /* A fejléc magassága, hogy ne takarja el a gombokat */
+    margin-top: 100px; /* A fejléc magassága, hogy ne takarja el a gombokat */
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 350px); /* Gombok méretezése */
-    gap: 20px;
+    grid-template-columns: repeat(3, 550px); /* Gombok méretezése */
+    gap: 30px;
 }
 
 .tile {
-    background-color: #08b4dc; /* Másik kék */
-    color: white;
+    background-size: cover; /* A kép kitölti a gombot */
+    background-position: center; /* A kép középre igazítása */
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 8px;
     padding: 20px;
     font-size: 24px;
+    font-family: 'Lora', serif;
     cursor: pointer;
     transition: background-color 0.3s;
+    height: 150px; /* Gombok magassága */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tile:hover {
-    background-color: rgba(0, 95, 115, 0.8); /* Áttetsző sötétebb kék */
+    opacity: 0.8; /* Kicsit áttetszővé teszi a gombot hover alatt */
+}
+
+/* Külön háttérképek a gombokhoz */
+.tile:nth-child(1) {
+    background-image: url('ahjk.jpg');
+}
+
+.tile:nth-child(2) {
+    background-image: url('ak.jpg');
+}
+
+.tile:nth-child(3) {
+    background-image: url('movar.png');
+}
+
+.tile:nth-child(4) {
+    background-image: url('éékk.jpg');
+}
+
+.tile:nth-child(5) {
+    background-image: url('kgyk.png');
+}
+
+.tile:nth-child(6) {
+    background-image: url('givk.png');
+}
+
+.tile:nth-child(7) {
+    background-image: url('esk.png');
+}
+
+.tile:nth-child(8) {
+    background-image: url('dfk.jpg');
+}
+
+.tile:nth-child(9) {
+    background-image: url('muk.jpg');
+}
+
+
+.tile {
+    background-color: #ffffff; /* Háttérszín */
+    color: rgb(0, 0, 0); /* Szöveg színe */
+    border: 4px solid #08b4dc; /* Vékony keret (4px széles, kék szín) */
+    border-radius: 8px; /* Kerekített sarkok */
+    padding: 20px; /* Belso térköz */
+    font-size: 24px; /* Betűméret */
+    font-family: 'Lora', serif; /* Betűtípus */
+    cursor: pointer; /* Mutató jelző a gombon */
+    transition: background-color 0.4s; /* Áttűnés hatás */
+}
+
+.tile:hover {
+    background-color: rgba(0, 95, 115, 0.8); /* Áttetsző sötétebb kék hover alatt */
+    opacity: 0.8; /* Kicsit áttetszővé teszi a gombot hover alatt */
 }
