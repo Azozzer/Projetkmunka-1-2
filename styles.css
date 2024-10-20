@@ -1,0 +1,61 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    margin: 0;
+}
+
+header {
+    background-color: #283454; /* Sötét kék */
+    color: white;
+    padding: 20px;
+    width: 100%;
+    position: absolute; /* A fejléc a lap tetejére kerül */
+    top: 0; /* A tetejére rögzíti */
+    display: flex; /* Flexbox használata */
+    align-items: center; /* Vertikális középre igazítás */
+    justify-content: space-between; /* Térköz a kép és a középső szöveg között */
+}
+
+.logo {
+    width: 50px; /* Kép szélessége */
+    height: 50px; /* Kép magassága */
+    margin-right: 15px; /* Térköz a kép és a szöveg között */
+}
+
+h1 {
+    flex: 1; /* Szöveg középre igazítása */
+    text-align: center; /* Szöveg középre igazítása */
+    margin: 0; /* Nincs margó a szövegnél */
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px; /* A fejléc magassága, hogy ne takarja el a gombokat */
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 350px); /* Gombok méretezése */
+    gap: 20px;
+}
+
+.tile {
+    background-color: #08b4dc; /* Másik kék */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tile:hover {
+    background-color: rgba(0, 95, 115, 0.8); /* Áttetsző sötétebb kék */
+}
