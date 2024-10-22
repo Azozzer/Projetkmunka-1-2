@@ -6,8 +6,32 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh;
+    height: 100vh; /* A teljes magasság lefedése */
     margin: 0;
+    background-color: white; /* Fehér háttér */
+    position: relative; /* A pozicionálás segítésére */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Háttérbe helyezés */
+    background: 
+        linear-gradient(10deg, rgba(0, 128, 255, 0.6) 25%, transparent 75%), /* Élénk kék */
+        linear-gradient(25deg, rgba(255, 165, 0, 0.2) 15%, transparent 85%), /* Narancssárga */
+        linear-gradient(35deg, rgba(255, 255, 0, 0.2) 15%, transparent 85%), /* Citromsárga */
+        linear-gradient(45deg, rgba(210, 105, 30, 0.2) 15%, transparent 85%), /* Fahéj narancs */
+        linear-gradient(55deg, rgba(50, 205, 50, 0.1) 10%, transparent 90%), /* Lime zöld */
+        linear-gradient(65deg, rgba(0, 128, 0, 0.2) 15%, transparent 85%), /* Fenyő zöld */
+        linear-gradient(75deg, rgba(135, 206, 250, 0.6) 25%, transparent 75%), /* Ég kék */
+        linear-gradient(85deg, rgba(128, 0, 128, 0.1) 15%, transparent 85%), /* Lila */
+        linear-gradient(95deg, rgba(112, 128, 144, 0.05) 10%, transparent 90%); /* Barnás szürke */
+    background-size: 100% 100%; /* Az átlós csíkok mérete */
+    background-repeat: no-repeat; /* Nincs ismétlés */
 }
 
 header {
@@ -124,7 +148,6 @@ main {
     background-image: url('muk.jpg');
 }
 
-
 .tile {
     background-color: #ffffff; /* Háttérszín */
     color: rgb(0, 0, 0); /* Szöveg színe */
@@ -139,5 +162,4 @@ main {
 
 .tile:hover {
     background-color: rgba(0, 95, 115, 0.8); /* Áttetsző sötétebb kék hover alatt */
-    opacity: 0.8; /* Kicsit áttetszővé teszi a gombot hover alatt */
 }
