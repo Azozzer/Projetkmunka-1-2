@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lora', serif;
+    overflow: hidden; /* Eltávolítja a görgetést és a felesleges területeket */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    background-color: white;
+    position: relative;
+    overflow-x: hidden;
+    padding: 0 20px;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        linear-gradient(10deg, rgba(0, 128, 255, 0.6) 25%, transparent 75%), 
+        linear-gradient(25deg, rgba(255, 165, 0, 0.2) 15%, transparent 85%), 
+        linear-gradient(35deg, rgba(255, 255, 0, 0.2) 15%, transparent 85%), 
+        linear-gradient(45deg, rgba(210, 105, 30, 0.2) 15%, transparent 85%), 
+        linear-gradient(55deg, rgba(50, 205, 50, 0.1) 10%, transparent 90%), 
+        linear-gradient(65deg, rgba(0, 128, 0, 0.2) 15%, transparent 85%), 
+        linear-gradient(75deg, rgba(135, 206, 250, 0.6) 25%, transparent 75%), 
+        linear-gradient(85deg, rgba(128, 0, 128, 0.1) 15%, transparent 85%), 
+        linear-gradient(95deg, rgba(112, 128, 144, 0.05) 10%, transparent 90%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: #283454;
+    color: white;
+    padding: 20px;
+    width: calc(100% - 40px);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Lora', serif;
+}
+
+.menu-item:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 100px;
+    width: 100%;
+    padding: 20px;
+    flex-grow: 1; 
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px 0 0 8px;
+    font-size: 16px;
+    width: 300px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #08b4dc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    font-size: 16px;
+}
+
+.search-bar button:hover {
+    background-color: #007ba8;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 20px; 
+    width: 100%; 
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px; 
+}
+
+.tile {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 4px solid #08b4dc;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 24px;
+    font-family: 'Lora', serif;
+    cursor: pointer;
+    transition: background-color 0.4s;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile:hover {
+    opacity: 0.8;
+}
+
+.tile:nth-child(1) {
+    background-image: url('ahjk.jpg');
+}
+
+.tile:nth-child(2) {
+    background-image: url('ak.jpg');
+}
+
+.tile:nth-child(3) {
+    background-image: url('movar.png');
+}
+
+.tile:nth-child(4) {
+    background-image: url('éékk.jpg');
+}
+
+.tile:nth-child(5) {
+    background-image: url('kgyk.png');
+}
+
+.tile:nth-child(6) {
+    background-image: url('givk.png');
+}
+
+.tile:nth-child(7) {
+    background-image: url('esk.png');
+}
+
+footer {
+    background-color: #283454;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    flex-shrink: 0;
+}
