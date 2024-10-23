@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="uzenet.css">
+    <title>SZE Tanulmányi Fórum - Üzenőfal</title>
+</head>
+<body>
+    <header>
+        <img src="sze.png" alt="SZE Tanulmányi Fórum" class="logo">
+        <h1>SZE Tanulmányi Fórum</h1>
+        <nav>
+            <a href="#" class="menu-item" onclick="window.location.href='fooldal.html';">Főoldal</a>
+            <a href="#" class="menu-item">Bejelentkezés</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="message-board">
+            <h2>Üzenőfal</h2>
+            
+            <div class="messages">
+                <!-- Korábbi üzenetek -->
+                <div class="message">
+                    <img src="profilepic.jpg" alt="Profil" class="profile-pic">
+                    <div class="message-content">
+                        <p><strong>Admin</strong></p>
+                        <p>Szia! Semmi extra.</p>
+                        <img src="cutecat.jpg" alt="Kép" class="message-image">
+                        <a href="#" class="message-link"></a>
+                    </div>
+                </div>
+                <div class="message">
+                    <img src="profilepic2.jpg" alt="Profil" class="profile-pic">
+                    <div class="message-content">
+                        <p><strong>Moderátor</strong></p>
+                        <p>Szia! Mi újság?</p>
+                        <a href="#" class="message-link">Link</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="message-form">
+                <textarea placeholder="Írj egy üzenetet..." required></textarea>
+                <input type="file" accept="image/*" class="file-upload" />
+                <button type="submit">Küldés</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Kapcsolat</h2>
+            <p>Email: asdasd@sze.hu</p>
+        </div>
+    </footer>
+</body>
+</html>
