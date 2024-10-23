@@ -5,8 +5,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh; /* A teljes magasság lefedése */
+    justify-content: flex-start; /* Alul kezdjük a tartalmat */
+    min-height: 100vh; /* Minimális magasság a viewport magasságának 100%-a */
     margin: 0;
     background-color: white; /* Fehér háttér */
     position: relative; /* A pozicionálás segítésére */
@@ -82,12 +82,14 @@ main {
     align-items: center;
     justify-content: center;
     margin-top: 100px; /* A fejléc magassága, hogy ne takarja el a gombokat */
+    width: 100%; /* Teljes szélesség */
+    padding: 0 20px; /* Oldalsó padding */
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 550px); /* Gombok méretezése */
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Dinamikus oszlopok */
+    gap: 20px; /* Kisebb távolság a gombok között */
 }
 
 .tile {
@@ -162,4 +164,29 @@ main {
 
 .tile:hover {
     background-color: rgba(0, 95, 115, 0.8); /* Áttetsző sötétebb kék hover alatt */
+}
+
+footer {
+    background-color: #283454; /* Sötét kék */
+    color: white;
+    padding: 10px; /* Kisebb padding a footerben */
+    width: 100%;
+    display: flex; /* Flexbox a footerben */
+    justify-content: space-between; /* Balra és jobbra igazítás */
+    align-items: center; /* Középre igazítás vertikálisan */
+}
+
+.contact-section {
+    display: flex;
+    justify-content: space-between; /* Balra és jobbra igazítás */
+    width: 100%; /* Teljes szélesség */
+}
+
+.contact-section h2 {
+    margin: 0 0 5px 0; /* Csökkentett margó */
+    font-size: 18px; /* Kisebb betűméret */
+}
+
+.contact-section p {
+    margin: 0; /* Nincs margó a paragrafusoknál */
 }
