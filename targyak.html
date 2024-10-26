@@ -15,9 +15,54 @@
     </header>
 
     <main>
-
-
         
+        <h2 class="tema">Új téma létrehozása</h2>
+        <!--Létrehozó neve-->
+        <form>
+            <label for="nev">Létrehozó neve:
+                <input id="nev" name="nev" type="text" required>
+            </label>
+
+            <!--Létrehozó titulusának a kiválasztása-->
+            <section class="titulus-type">
+                <label for="titulus">Létrehozó titulusa: 
+                    <select id="titulus" name="titulus" required>
+                        <option value="" disabled selected hidden>Kiválasztás</option>
+                        <option value="oktato">Oktató</option>
+                        <option value="tanarseged">Tanársegéd</option>
+                        <option value="hallgato">Hallgató</option>
+                    </select>
+                </label>
+            </section>
+
+            <!--Téma neve-->
+            <section class="tema-elnevezes">
+                <label for="tema-nev">Téma neve: 
+                    <input id="tema-nev" name="tema-nev" type="text" maxlength="100" required>
+                </label>
+            </section>
+
+
+            <!--Leírás mező-->
+            <section class="leiras-text">
+                <label for="leiras">Leírás (opcionális): 
+                    <textarea id="leiras" name="leiras" maxlength="1500"></textarea>
+                </label>
+            </section>
+
+            <!--Fájl feltöltése-->
+            <section class="file-feltoltes">
+                <input type="file" accept="image/*" class="file-upload" required/>
+            </section>
+
+            <!--Küldés gomb-->
+            <section class="kuldesgomb">
+                <button type="submit">Küldés</button>
+            </section>
+        </form>
+
+
+
     </main>
 
 
