@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lora', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    background-color: white;
+    position: relative;
+    overflow-x: hidden;
+    padding: 0 20px;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        linear-gradient(10deg, rgba(0, 128, 255, 0.6) 25%, transparent 75%),
+        linear-gradient(25deg, rgba(255, 165, 0, 0.2) 15%, transparent 85%),
+        linear-gradient(35deg, rgba(255, 255, 0, 0.2) 15%, transparent 85%),
+        linear-gradient(45deg, rgba(210, 105, 30, 0.2) 15%, transparent 85%),
+        linear-gradient(55deg, rgba(50, 205, 50, 0.1) 10%, transparent 90%),
+        linear-gradient(65deg, rgba(0, 128, 0, 0.2) 15%, transparent 85%),
+        linear-gradient(75deg, rgba(135, 206, 250, 0.6) 25%, transparent 75%),
+        linear-gradient(85deg, rgba(128, 0, 128, 0.1) 15%, transparent 85%),
+        linear-gradient(95deg, rgba(112, 128, 144, 0.05) 10%, transparent 90%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: #283454;
+    color: white;
+    padding: 20px;
+    width: calc(100% - 40px);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu-item:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 100px; /* Header magassága miatt */
+    width: 100%;
+    padding: 20px;
+    flex-grow: 1; /* Engedi a fő tartalomnak, hogy növekedjen */
+}
+
+footer {
+    background-color: #283454;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute; /* Rögzített az oldal alján */
+    bottom: 0;
+    left: 0;
+    flex-shrink: 0;
+}
+
+footer.fixed {
+    position: fixed; /* Ha a footer mindig fixen az alján kell lenni */
+    left: 0;
+    bottom: 0;
+}
+
+/* Login Form Styles */
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #08b4dc;
+    outline: none;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #08b4dc;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #007ba8;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.register-link a {
+    color: #08b4dc;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}

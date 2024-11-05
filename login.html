@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>SZE Tanulmányi Fórum - Bejelentkezés</title>
+</head>
+<body>
+    <header>
+        <img src="sze.png" alt="SZE Tanulmányi Fórum" class="logo">
+        <h1>SZE Tanulmányi Fórum</h1>
+        <nav>
+            <a href="fooldal.html" class="menu-item">Főoldal</a>
+            <a href="login.html" class="menu-item">Bejelentkezés</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="login-form">
+            <h2>Bejelentkezés</h2>
+            <form action="profil.html" method="post">
+                <div class="form-group">
+                    <label for="username">Felhasználónév</label>
+                    <input type="text" id="username" name="username" required placeholder="Adja meg a felhasználónevét">
+                </div>
+                <div class="form-group">
+                    <label for="password">Jelszó</label>
+                    <input type="password" id="password" name="password" required placeholder="Adja meg a jelszavát">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="login-button">Bejelentkezés</button>
+                </div>
+            </form>
+            <div class="register-link">
+                <p>Még nincs fiókod? <a href="reg.html">Regisztrálj itt</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Kapcsolat</h2>
+            <p>Email: asdasd@sze.hu</p>
+        </div>
+    </footer>
+</body>
+</html>
