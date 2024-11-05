@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lora', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    background-color: white;
+    position: relative;
+    overflow-x: hidden;
+    padding: 0 20px;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: 
+        linear-gradient(10deg, rgba(0, 128, 255, 0.6) 25%, transparent 75%),
+        linear-gradient(25deg, rgba(255, 165, 0, 0.2) 15%, transparent 85%),
+        linear-gradient(35deg, rgba(255, 255, 0, 0.2) 15%, transparent 85%),
+        linear-gradient(45deg, rgba(210, 105, 30, 0.2) 15%, transparent 85%),
+        linear-gradient(55deg, rgba(50, 205, 50, 0.1) 10%, transparent 90%),
+        linear-gradient(65deg, rgba(0, 128, 0, 0.2) 15%, transparent 85%),
+        linear-gradient(75deg, rgba(135, 206, 250, 0.6) 25%, transparent 75%),
+        linear-gradient(85deg, rgba(128, 0, 128, 0.1) 15%, transparent 85%),
+        linear-gradient(95deg, rgba(112, 128, 144, 0.05) 10%, transparent 90%);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: #283454;
+    color: white;
+    padding: 20px;
+    width: calc(100% - 40px);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu-item:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 100px;
+    width: 100%;
+    padding: 20px;
+}
+
+footer {
+    background-color: #283454;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    flex-shrink: 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Profile Page Styles */
+.profile {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.info-details {
+    flex: 1;
+}
+
+.info-details h3 {
+    margin: 0 0 10px 0;
+}
+
+.likes-dislikes {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.likes, .dislikes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Itt jön a kép dinamikus méretezése */
+.like-icon, .dislike-icon {
+    width: 20px;  /* A képek szélessége most 20px */
+    height: 20px; /* A képek magassága is 20px */
+    object-fit: contain; /* Az objektum méretarányosan jelenjen meg, ne torzuljon */
+}
+
+/* Ha az ikonok még mindig túl nagyok vagy kicsik, állíthatsz ezen az értéken */
+.like-count, .dislike-count {
+    font-size: 18px;
+}
+
+.user-topics {
+    margin-top: 20px;
+}
+
+.user-topics h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.user-topics ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.user-topics li {
+    margin: 5px 0;
+}
+
+.user-topics a {
+    text-decoration: none;
+    color: #08b4dc;
+}
+
+.user-topics a:hover {
+    text-decoration: underline;
+}
+
+.message-button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #08b4dc;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.message-button:hover {
+    background-color: #007ba8;
+}
