@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
-    <title>SZE Tanulmányi Fórum - Bejelentkezés</title>
+    <title>SZE Tanulmányi Fórum - Regisztráció</title>
 </head>
 <body>
     <header>
-        <img src="sze.png" alt="SZE Tanulmányi Fórum" class="logo">
+        <img src="szetf.png" alt="SZE Tanulmányi Fórum" class="logo">
         <h1>SZE Tanulmányi Fórum</h1>
         <nav>
             <a href="fooldal.html" class="menu-item">Főoldal</a>
@@ -17,23 +17,31 @@
     </header>
 
     <main>
-        <div class="login-form">
-            <h2>Bejelentkezés</h2>
+        <div class="register-form">
+            <h2>Regisztráció</h2>
             <form action="profil.html" method="post">
                 <div class="form-group">
-                    <label for="username">Felhasználónév</label>
-                    <input type="text" id="username" name="username" required placeholder="Adja meg a felhasználónevét">
+                    <label for="new-username"><b>Felhasználónév</b> (Ezt látják a fórumózok)</label>
+                    <input type="text" id="new-username" name="username" required placeholder="Válassz felhasználónevet">
                 </div>
                 <div class="form-group">
-                    <label for="password">Jelszó</label>
-                    <input type="password" id="password" name="password" required placeholder="Adja meg a jelszavát">
+                    <label for="email"><b>Email cím</b></label>
+                    <input type="email" id="email" name="email" required placeholder="Adja meg az email címét">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="login-button">Bejelentkezés</button>
+                    <label for="new-password"><b>Jelszó</b></label>
+                    <input type="password" id="new-password" name="password" required placeholder="Válassz jelszót">
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password"><b>Jelszó megerősítése</b></label>
+                    <input type="password" id="confirm-password" name="confirm_password" required placeholder="Erősítse meg a jelszót">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="register-button">Regisztráció</button>
                 </div>
             </form>
-            <div class="register-link">
-                <p>Még nincs fiókod? <a href="reg.html">Regisztrálj itt</a></p>
+            <div class="login-link">
+                <p>Van már fiókod? <a href="login.html">Jelentkezz be itt</a></p>
             </div>
         </div>
     </main>
