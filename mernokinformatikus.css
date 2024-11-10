@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lora', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Alul kezdjük a tartalmat */
+    min-height: 100vh; /* Minimális magasság a viewport magasságának 100%-a */
+    margin: 0;
+    background-color: white; /* Fehér háttér */
+    position: relative; /* A pozicionálás segítésére */
+    overflow-x: hidden; /* Oldalirányú görgetés kikapcsolása */
+    padding: 0 20px; /* Belső térköz a body-n belül */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Háttérbe helyezés */
+    background: 
+        linear-gradient(10deg, rgba(0, 128, 255, 0.6) 25%, transparent 75%), /* Élénk kék */
+        linear-gradient(25deg, rgba(255, 165, 0, 0.2) 15%, transparent 85%), /* Narancssárga */
+        linear-gradient(35deg, rgba(255, 255, 0, 0.2) 15%, transparent 85%), /* Citromsárga */
+        linear-gradient(45deg, rgba(210, 105, 30, 0.2) 15%, transparent 85%), /* Fahéj narancs */
+        linear-gradient(55deg, rgba(50, 205, 50, 0.1) 10%, transparent 90%), /* Lime zöld */
+        linear-gradient(65deg, rgba(0, 128, 0, 0.2) 15%, transparent 85%), /* Fenyő zöld */
+        linear-gradient(75deg, rgba(135, 206, 250, 0.6) 25%, transparent 75%), /* Ég kék */
+        linear-gradient(85deg, rgba(128, 0, 128, 0.1) 15%, transparent 85%), /* Lila */
+        linear-gradient(95deg, rgba(112, 128, 144, 0.05) 10%, transparent 90%); /* Barnás szürke */
+    background-size: 100% 100%; /* Az átlós csíkok mérete */
+    background-repeat: no-repeat; /* Nincs ismétlés */
+}
+
+header {
+    background-color: #283454; /* Sötét kék */
+    color: white;
+    padding: 20px;
+    width: calc(100% - 40px); /* Teljes szélesség - a padding figyelembevételével */
+    position: fixed; /* A fejléc a lap tetején rögzítve */
+    top: 0; /* A tetejére rögzíti */
+    display: flex; /* Flexbox használata */
+    align-items: center; /* Vertikális középre igazítás */
+    justify-content: space-between; /* Térköz a kép és a középső szöveg között */
+    z-index: 1000; /* A fejléc a legfelső rétegen */
+}
+
+h1 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo {
+    width: 50px; /* Kép szélessége */
+    height: 50px; /* Kép magassága */
+    margin-right: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 30px; /* Térköz a menüpontok között */
+}
+
+.menu-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Lora', serif;
+}
+
+.menu-item:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px; /* A fejléc magassága, hogy ne takarja el a gombokat */
+    width: 100%; /* Teljes szélesség */
+    padding: 0 20px; /* Oldalsó padding */
+    flex-grow: 1; /* A main szekció kitölti a középső területet */
+    flex-direction: column; /* Függőleges elrendezés a keresősáv és a grid számára */
+}
+
+/* Új tantárgycsoport grid */
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 oszlop */
+    gap: 20px;
+    padding: 30px;
+    width: 100%;
+}
+
+.subject-tile {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 4px solid #08b4dc;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 24px;
+    font-family: 'Lora', serif;
+    cursor: pointer;
+    transition: background-color 0.4s;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subject-tile:hover {
+    opacity: 0.8;
+}
+
+
+/* Külön háttérképek a gombokhoz */
+.tile:nth-child(1) {
+    background-image: url('ahjk.jpg');
+}
+
+.tile:nth-child(2) {
+    background-image: url('ak.jpg');
+}
+
+.tile:nth-child(3) {
+    background-image: url('movar.png');
+}
+
+.tile:nth-child(4) {
+    background-image: url('éékk.jpg');
+}
+
+.tile:nth-child(5) {
+    background-image: url('kgyk.png');
+}
+
+.tile:nth-child(6) {
+    background-image: url('givk.png');
+}
+
+.tile:nth-child(7) {
+    background-image: url('esk.png');
+}
+
+.tile:nth-child(8) {
+    background-image: url('dfk.jpg');
+}
+
+.tile:nth-child(9) {
+    background-image: url('muk.jpg');
+}
+
+/* Kereső sáv */
+.search-bar {
+    display: flex;
+    justify-content: center; /* Középre igazítjuk a keresősávot */
+    margin-bottom: 20px; /* Térköz a keresősáv alatt */
+    width: 100%;
+    max-width: 600px; /* Max szélesség, hogy ne legyen túl széles nagy kijelzőn */
+    padding: 10px 20px;
+    border-radius: 8px; /* Lekerekített sarkok */
+}
+
+.search-bar input {
+    width: 100%; /* Teljes szélesség */
+    padding: 10px; /* Belső térköz */
+    font-size: 16px; /* Betűméret */
+    border: 2px solid #08b4dc; /* Kék keret */
+    border-radius: 8px 0 0 8px; /* Balra lekerekített sarkok */
+    outline: none; /* Nincs outline ha az input aktív */
+    box-sizing: border-box;
+}
+
+.search-bar button {
+    padding: 10px 20px; /* Térköz a gombon belül */
+    background-color: #08b4dc; /* Kék háttér */
+    color: white; /* Fehér szöveg */
+    border: none; /* Nincs keret */
+    border-radius: 0 8px 8px 0; /* Jobbra lekerekített sarkok */
+    cursor: pointer; /* Mutató jelző a gombon */
+    transition: background-color 0.3s; /* Áttűnés hatás */
+}
+
+.search-bar button:hover {
+    background-color: #007ba8; /* Sötétebb kék hover állapot */
+}
+
+footer {
+    background-color: #283454; /* Sötét kék */
+    color: white;
+    padding: 20px; /* Térköz a footer tartalmán belül */
+    width: 100%; /* Teljes szélesség */
+    display: flex; /* Flexbox a footerben */
+    justify-content: space-between; /* Balra és jobbra igazítás */
+    align-items: center; /* Középre igazítás vertikálisan */
+    position: relative; /* Rögzítési pozíció */
+    bottom: 0; /* Az aljára rögzítése */
+    flex-shrink: 0; /* Footer nem zsugorodik össze */
+}
+
+footer p {
+    margin: 0; /* Margin eltávolítása a footerben */
+}

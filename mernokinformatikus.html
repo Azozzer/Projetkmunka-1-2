@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mernokinformatikus.css">
+    <title>SZE Tanulmányi Fórum</title>
+</head>
+<body> 
+    <header>
+        <img src="szetf.png" alt="SZE Tanulmányi Fórum" class="logo">
+        <h1>SZE Tanulmányi Fórum</h1>
+        <nav>
+            <a href="#" class="menu-item" onclick="window.location.href='fooldal.html';">Főoldal</a>
+            <a href="#" class="menu-item" onclick="window.location.href='login.html';">Bejelentkezés</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Kereső sáv -->
+        <div class="search-bar">
+            <input type="text" placeholder="Keresendő téma..." id="searchInput">
+            <button>Keresés</button>
+        </div>
+
+        <div class="subject-grid">
+            <div class="subject-tile" onclick="window.location.href='kotelezo_mi.html';">Kötelező tárgyak</div>
+            <div class="subject-tile" onclick="window.location.href='valaszthato_mi.html';">Választható tantárgycsoport</div>
+            <div class="subject-tile" onclick="window.location.href='szakmai_mi.html';">Választható szakmai tantárgycsoport</div>
+        </div>        
+    </main>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Kapcsolat</h2>
+            <p>Email: asdasd@sze.hu</p>
+        </div>
+    </footer>
+</body>
+</html>
