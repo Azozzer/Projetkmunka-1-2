@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profil.css">
+    <title>Profil Szerkesztése</title>
+</head>
+<body>
+    <header>
+        <img src="szetf.png" alt="SZE Tanulmányi Fórum" class="logo">
+        <h1>Profil Szerkesztése</h1>
+        <nav>
+            <a href="#" class="menu-item" onclick="window.location.href='fooldal.html';">Főoldal</a>
+            <a href="profil.html" class="menu-item">Vissza a Profilomhoz</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="profile">
+            <h2>Profil Szerkesztése</h2>
+            <form id="editProfileForm">
+                <!-- Profilkép feltöltés -->
+                <div class="profile-info">
+                    <img src="profiletest.png" alt="Profilkép" class="profile-pic" id="profilePicPreview">
+                    <input type="file" id="profilePicInput" accept="image/*">
+                </div>
+
+                <!-- Felhasználónév szerkesztése -->
+                <div class="form-group">
+                    <label for="username">Felhasználónév:</label>
+                    <input type="text" id="username" name="username" value="Felhasználónév" required>
+                </div>
+
+                <!-- Mentés gomb -->
+                <button type="submit" class="message-button">Változtatások Mentése</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Kapcsolat</h2>
+            <p>Email: asdasd@sze.hu</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript a profilkép előnézethez -->
+    <script>
+    document.getElementById('profilePicInput').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profilePicPreview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Ideiglenes JavaScript a form elküldéséhez
+    document.getElementById('editProfileForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Profil frissítve!');
+        // Itt szerveroldali kóddal tárolhatod az adatokat
+    });
+    </script>
+</body>
+</html>
