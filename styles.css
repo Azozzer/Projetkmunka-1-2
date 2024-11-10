@@ -163,9 +163,7 @@ main {
     width: 100%;
     max-width: 600px; /* Max szélesség, hogy ne legyen túl széles nagy kijelzőn */
     padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.9); /* Enyhén átlátszó fehér háttér */
     border-radius: 8px; /* Lekerekített sarkok */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Árnyék a sáv alatt */
 }
 
 .search-bar input {
