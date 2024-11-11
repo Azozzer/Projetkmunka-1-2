@@ -5,7 +5,7 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Lora', serif;
-    overflow: hidden; /* Eltávolítja a görgetést és a felesleges területeket */
+    
 }
 
 body {
@@ -67,7 +67,33 @@ h1 {
     font-weight: 1000;
 }
 
+.tema {
+    text-align: center;
+    font-size: 20px;
+    margin: 0 auto; 
+}
 
+.hirek {
+    border:3px solid red;
+    width: 100%;
+    height: 20%;
+    max-width: 250px;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 15px;
+    position: absolute;
+    right: 50px;
+    bottom:40%;
+    background-color: white;
+    overflow: scroll;
+}
+
+.hirek li {
+    border:1px solid blue;
+    margin: 10px 5px;
+    border-radius: 10px;
+    
+}
 
 .logo {
     width: 50px;
@@ -85,6 +111,7 @@ form {
     flex-direction: column;
     gap: 20px;
     padding-top: 150px;
+    width: 560px;
 }
 
 /* Input és select mezők stílusa */
@@ -143,6 +170,8 @@ footer {
     justify-content: space-between;
     margin-top: auto;
     margin-left: 15px;
+    position: fixed; 
+    bottom: 0;
     
     
 }
