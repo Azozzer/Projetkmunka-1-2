@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reg.css">
+    <title>SZE Tanulmányi Fórum - Regisztráció</title>
+</head>
+<body>
+    <header>
+        <img src="szetf.png" alt="SZE Tanulmányi Fórum" class="logo">
+        <h1>SZE Tanulmányi Fórum</h1>
+        <nav>
+            <a href="fooldal.html" class="menu-item">Főoldal</a>
+            <a href="login.html" class="menu-item">Bejelentkezés</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="register-form">
+            <h2>Regisztráció</h2>
+            <form action="profil.html" method="post">
+                <div class="form-group">
+                    <label for="new-username"><b>Felhasználónév</b> (Ezt látják a fórumózok)</label>
+                    <input type="text" id="new-username" name="username" required placeholder="Válassz felhasználónevet">
+                </div>
+                <div class="form-group">
+                    <label for="email"><b>Email cím</b></label>
+                    <input type="email" id="email" name="email" required placeholder="Adja meg az email címét">
+                </div>
+                <div class="form-group">
+                    <label for="new-password"><b>Jelszó</b></label>
+                    <input type="password" id="new-password" name="password" required placeholder="Válassz jelszót">
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password"><b>Jelszó megerősítése</b></label>
+                    <input type="password" id="confirm-password" name="confirm_password" required placeholder="Erősítse meg a jelszót">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="register-button">Regisztráció</button>
+                </div>
+            </form>
+            <div class="login-link">
+                <p>Van már fiókod? <a href="login.html">Jelentkezz be itt</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const userData = {
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value
+            };
+
+            fetch("https://localhost:5001/api/user/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Siker:", data);
+                alert(data.message);
+            })
+            .catch((error) => {
+                console.error("Hiba:", error);
+                alert("Hiba történt a regisztráció során.");
+            });
+        });
+    </script>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Kapcsolat</h2>
+            <p>Email: asdasd@sze.hu</p>
+        </div>
+    </footer>
+</body>
+</html>
