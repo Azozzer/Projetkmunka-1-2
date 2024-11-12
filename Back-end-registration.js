@@ -13,7 +13,7 @@ const db = mysql.createConnection(
     host: 'localhost',
     user: 'root',
     password: '...', // Add meg az adatbázis jelszavát
-    database: '...' // Add meg az adatbázis nevét
+    database: 'Database_1' // Add meg az adatbázis nevét
 });
 
 // Csatlakozás az adatbázishoz
