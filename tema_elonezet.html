@@ -8,12 +8,22 @@
 </head>
 <body>
     <header>
-        <img src="sze.png" alt="SZE Tanulmányi Fórum" class="logo">
+        
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <img src="sze.png" alt="Menu Icon" class="logo" />
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='profil.html';">Profilom</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+
+          </div>
+        
         <h1>SZE Tanulmányi Fórum</h1>
-        <nav>
-            <a href="#" class="menu-item" onclick="window.location.href='fooldal.html';">Főoldal</a>
-            <a href="login.html" class="menu-item">Bejelentkezés</a>
-        </nav>
     </header>
 
     <main>
@@ -30,11 +40,5 @@
 
     </main>
 
-    <footer>
-        <div class="contact-section">
-            <h2>Kapcsolat</h2>
-            <p>Email: asdasd@sze.hu</p>
-        </div>
-    </footer>
 </body>
 </html>

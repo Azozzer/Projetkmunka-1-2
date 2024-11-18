@@ -22,16 +22,7 @@ body::before {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: 
-        linear-gradient(10deg, rgba(0, 128, 255, 0.6) 25%, transparent 75%),
-        linear-gradient(25deg, rgba(255, 165, 0, 0.2) 15%, transparent 85%),
-        linear-gradient(35deg, rgba(255, 255, 0, 0.2) 15%, transparent 85%),
-        linear-gradient(45deg, rgba(210, 105, 30, 0.2) 15%, transparent 85%),
-        linear-gradient(55deg, rgba(50, 205, 50, 0.1) 10%, transparent 90%),
-        linear-gradient(65deg, rgba(0, 128, 0, 0.2) 15%, transparent 85%),
-        linear-gradient(75deg, rgba(135, 206, 250, 0.6) 25%, transparent 75%),
-        linear-gradient(85deg, rgba(128, 0, 128, 0.1) 15%, transparent 85%),
-        linear-gradient(95deg, rgba(112, 128, 144, 0.05) 10%, transparent 90%);
+    background-color: whitesmoke;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -57,10 +48,125 @@ h1 {
     font-weight: 700;
 }
 
+#menu-toggle {
+    opacity: 0;
+  }
+  #menu-toggle:checked + .menu-btn > span {
+    transform: rotate(45deg);
+  }
+  #menu-toggle:checked + .menu-btn > span::before {
+    top: 0;
+    transform: rotate(0deg);
+  }
+  #menu-toggle:checked + .menu-btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  #menu-toggle:checked ~ .menu-box {
+    left: 0 !important;
+  }
+  .menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .menu-btn > span,
+  .menu-btn > span::before,
+  .menu-btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    transition-duration: .25s;
+  }
+  .menu-btn > span::before {
+    content: '';
+    top: -8px;
+  }
+  .menu-btn > span::after {
+    content: '';
+    top: 8px;
+  }
+  .menu-box {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #ECEFF1;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+    transition-duration: .25s;
+  }
+  .menu-item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+  }
+  .menu-item:hover {
+    background-color: #CFD8DC;
+  }
+
+.navbar {
+  box-shadow: 0px 5px 10px 0px #aaa;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  opacity: 0.85;
+  height: 50px;
+  z-index: 12;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+}
+
+.menu-items {
+  order: 2;
+  display: flex;
+}
+
+.menu-items li {
+  list-style: none;
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.menu-items a:hover {
+  color: #117964;
+  transition: color 0.3s ease-in-out;
+}
+
+
 .logo {
     width: 50px;
     height: 50px;
-    margin-right: 20px;
+    margin-right: auto;
 }
 
 nav {
@@ -68,11 +174,11 @@ nav {
     gap: 30px;
 }
 
-.menu-item {
+/*.menu-item {
     color: white;
     text-decoration: none;
     font-size: 18px;
-}
+}*/
 
 .menu-item:hover {
     text-decoration: underline;
@@ -92,8 +198,8 @@ main {
 .temabox {
     width: 100%;
     max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
+    margin: auto auto;
+    padding: 10px;
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -103,25 +209,4 @@ main {
 
 .temabox h2 {
     text-align: center;
-}
-
-
-
-footer {
-    background-color: #283454;
-    color: white;
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    flex-shrink: 0;
-    margin-left: 15px;
-}
-
-footer p {
-    margin: 0;
-    
 }
