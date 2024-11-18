@@ -10,8 +10,23 @@
 
 <body> 
     <header>
-        <img src="sze.png" alt="SZE Tanulmányi Fórum" class="logo">
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <span></span>
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='profil.html';">Profilom</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+        </div>
         <h1>SZE Tanulmányi Fórum</h1>
+
+        <nav>
+            <a href="#" class="login-item" onclick="window.location.href='login.html';">Bejelentkezés</a>
+        </nav>
     </header>
 
     <main>
@@ -22,8 +37,8 @@
             <h2 class="tema">Új téma létrehozása</h2>
             <!--Téma neve-->
             <section class="tema-elnevezes">
-                <label for="tema-nev">Téma neve: 
-                    <input id="tema-nev" name="tema-nev" type="text" maxlength="100" required>
+                <label for="tema-nev">Téma neve:  
+                    <input id="tema-nev" name="tema-nev" type="text" maxlength="100" required placeholder="Adja meg a téma nevét *">
                 </label>
             </section>
 
@@ -31,13 +46,13 @@
             <!--Leírás mező-->
             <section class="leiras-text">
                 <label for="leiras">Leírás (opcionális): 
-                    <textarea id="leiras" name="leiras" maxlength="1500"></textarea>
+                    <textarea id="leiras" name="leiras" maxlength="1500" placeholder="Ide írhatja a feltöltendő téma leírását..."></textarea>
                 </label>
             </section>
 
             <!--Fájl feltöltése-->
             <section class="file-feltoltes">
-                <input type="file" accept="image/*" class="file-upload" required/>
+                <input type="file" class="file-upload" required/>
             </section>
 
             <!--Küldés gomb-->
@@ -45,16 +60,6 @@
                 <button type="submit">Küldés</button>
             </section>
         </form>
-
-        <div class="hirek">
-            <ul>
-                <li>hír1</li>
-                <li>hír2</li>
-                <li>hír3</li>
-                <li>hír4</li>
-                <li>hír5</li>
-            </ul>
-        </div>
     </main>
 
 
