@@ -1,13 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
 
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Space Grotesk', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
     margin: 0;
+    grid-template-rows: 1fr auto 1fr; /* A header és footer magassága egyforma */
     background-color: white;
     position: relative;
     overflow-x: hidden;
@@ -38,6 +39,7 @@ header {
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
+    height: 50px;
 }
 
 h1 {
@@ -73,6 +75,8 @@ h1 {
     height: 26px;
     cursor: pointer;
     z-index: 1;
+    margin: 25px auto;
+    
   }
   .menu-btn > span,
   .menu-btn > span::before,
@@ -110,7 +114,7 @@ h1 {
     display: block;
     padding: 12px 24px;
     color: #333;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;
@@ -174,11 +178,11 @@ nav {
     gap: 30px;
 }
 
-/*.menu-item {
+.login-item {
     color: white;
     text-decoration: none;
     font-size: 18px;
-}*/
+}
 
 .menu-item:hover {
     text-decoration: underline;
@@ -198,15 +202,36 @@ main {
 .temabox {
     width: 100%;
     max-width: 800px;
-    margin: auto auto;
+    margin: 135px;
     padding: 10px;
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    height: 500px;
+    height: 50%;
     
 }
 
 .temabox h2 {
     text-align: center;
 }
+
+
+
+footer {
+  background-color: #283454; /* Sötét kék */
+  color: white;
+  padding: 20px; /* Térköz a footer tartalmán belül */
+  width: 100%; /* Teljes szélesség */
+  display: flex; /* Flexbox a footerben */
+  justify-content: space-between; /* Balra és jobbra igazítás */
+  align-items: center; /* Középre igazítás vertikálisan */
+  position: fixed; /* Rögzítési pozíció */
+  bottom: 0; /* Az aljára rögzítése */
+  flex-shrink: 0; /* Footer nem zsugorodik össze */
+  height: 50px;
+  
+}
+.contact-section h2, p {
+  padding-left: 15px;
+}
+
