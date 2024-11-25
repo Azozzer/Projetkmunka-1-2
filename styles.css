@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
-
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Space Grotesk', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,26 +19,19 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Háttérbe helyezés */
-    background: 
-        linear-gradient(10deg, rgba(0, 128, 255, 0.6) 25%, transparent 75%), /* Élénk kék */
-        linear-gradient(25deg, rgba(255, 165, 0, 0.2) 15%, transparent 85%), /* Narancssárga */
-        linear-gradient(35deg, rgba(255, 255, 0, 0.2) 15%, transparent 85%), /* Citromsárga */
-        linear-gradient(45deg, rgba(210, 105, 30, 0.2) 15%, transparent 85%), /* Fahéj narancs */
-        linear-gradient(55deg, rgba(50, 205, 50, 0.1) 10%, transparent 90%), /* Lime zöld */
-        linear-gradient(65deg, rgba(0, 128, 0, 0.2) 15%, transparent 85%), /* Fenyő zöld */
-        linear-gradient(75deg, rgba(135, 206, 250, 0.6) 25%, transparent 75%), /* Ég kék */
-        linear-gradient(85deg, rgba(128, 0, 128, 0.1) 15%, transparent 85%), /* Lila */
-        linear-gradient(95deg, rgba(112, 128, 144, 0.05) 10%, transparent 90%); /* Barnás szürke */
-    background-size: 100% 100%; /* Az átlós csíkok mérete */
-    background-repeat: no-repeat; /* Nincs ismétlés */
+    z-index: -1;
+    background-color: whitesmoke;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 header {
     background-color: #283454; /* Sötét kék */
     color: white;
     padding: 20px;
+    padding-bottom: 5px;
     width: calc(100% - 40px); /* Teljes szélesség - a padding figyelembevételével */
+    height: 40px;
     position: fixed; /* A fejléc a lap tetején rögzítve */
     top: 0; /* A tetejére rögzíti */
     display: flex; /* Flexbox használata */
@@ -49,19 +40,22 @@ header {
     z-index: 1000; /* A fejléc a legfelső rétegen */
 }
 
-h1 {
-    flex: 1;
-    text-align: center;
-    margin: 0;
-    font-family: 'Lora', serif;
+h1.header-title {
+    position: absolute; /* Leválasztja a többi elemtől */
+    left: 50%; /* A bal oldal 50%-a */
+    top: 5%;
+    transform: translateX(-50%); /* Visszahúzza a szöveget a saját közepére */
+    /*margin: 0;*/
     font-size: 24px;
     font-weight: 700;
+    text-align: center; /* A szöveg középre igazítása */
 }
 
 .logo {
     width: 50px; /* Kép szélessége */
     height: 50px; /* Kép magassága */
     margin-right: 20px;
+    
 }
 
 nav {
@@ -69,14 +63,13 @@ nav {
     gap: 30px; /* Térköz a menüpontok között */
 }
 
-.menu-item {
+.login-item {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    font-family: 'Lora', serif;
 }
 
-.menu-item:hover {
+.login-item:hover {
     text-decoration: underline;
 }
 
@@ -95,17 +88,17 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Dinamikus oszlopok */
     gap: 20px; /* Kisebb távolság a gombok között */
-    padding: 30px;
+    padding-top: 5px;
+    padding-bottom: 45px;
 }
 
 .tile {
     background-color: #ffffff; /* Háttérszín */
     color: rgb(0, 0, 0); /* Szöveg színe */
-    border: 4px solid #08b4dc; /* Vékony keret (4px széles, kék szín) */
+    border: 1px solid #535353; /* Vékony keret (4px széles, kék szín) */
     border-radius: 8px; /* Kerekített sarkok */
     padding: 20px; /* Belső térköz */
     font-size: 24px; /* Betűméret */
-    font-family: 'Lora', serif; /* Betűtípus */
     cursor: pointer; /* Mutató jelző a gombon */
     transition: background-color 0.4s; /* Áttűnés hatás */
     height: 150px; /* Gombok magassága */
@@ -119,50 +112,71 @@ main {
 }
 
 /* Külön háttérképek a gombokhoz */
-.tile:nth-child(1) {
+.tile:nth-child(1):hover {
     background-image: url('ahjk.jpg');
+    background-color: grey;
+    background-blend-mode: multiply;
 }
 
-.tile:nth-child(2) {
+.tile:nth-child(2):hover {
     background-image: url('ak.jpg');
+    background-color: rgb(2, 114, 2);
+    background-blend-mode: multiply; /* Szín és kép keverése */
 }
 
-.tile:nth-child(3) {
+.tile:nth-child(3):hover {
     background-image: url('movar.png');
+    background-color: orange;
+    background-blend-mode: multiply; /* Szín és kép keverése */
 }
 
-.tile:nth-child(4) {
+.tile:nth-child(4):hover {
     background-image: url('éékk.jpg');
+    background-color: rgb(146, 105, 51);
+    background-blend-mode: multiply; /* Szín és kép keverése */
 }
 
-.tile:nth-child(5) {
+.tile:nth-child(5):hover {
     background-image: url('kgyk.png');
+    background-color: rgb(0, 105, 243);
+    background-blend-mode: multiply; /* Szín és kép keverése */
 }
 
-.tile:nth-child(6) {
+.tile:nth-child(6):hover {
     background-image: url('givk.png');
+    background-color: rgb(117, 226, 117);
+    background-blend-mode: multiply; /* Szín és kép keverése */
 }
 
-.tile:nth-child(7) {
+.tile:nth-child(7):hover {
     background-image: url('esk.png');
+    background-color: red;
+    background-blend-mode: multiply; /* Szín és kép keverése */
 }
 
-.tile:nth-child(8) {
+.tile:nth-child(8):hover {
     background-image: url('dfk.jpg');
+    background-color: yellow;
+    background-blend-mode: multiply; /* Szín és kép keverése */
 }
 
-.tile:nth-child(9) {
+.tile:nth-child(9):hover {
     background-image: url('muk.jpg');
+    background-color: purple;
+    background-blend-mode: multiply; /* Szín és kép keverése */
 }
 
 /* Kereső sáv */
 .search-bar {
     display: flex;
     justify-content: center; /* Középre igazítjuk a keresősávot */
-    margin-bottom: 20px; /* Térköz a keresősáv alatt */
+    margin-bottom: 5px; /* Térköz a keresősáv alatt */
     width: 100%;
     max-width: 600px; /* Max szélesség, hogy ne legyen túl széles nagy kijelzőn */
-    padding: 10px 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 8px; /* Lekerekített sarkok */
 }
 
@@ -176,7 +190,12 @@ main {
     box-sizing: border-box;
 }
 
+input::placeholder {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
 .search-bar button {
+    font-family: 'Space Grotesk', sans-serif;
     padding: 10px 20px; /* Térköz a gombon belül */
     background-color: #08b4dc; /* Kék háttér */
     color: white; /* Fehér szöveg */
@@ -195,6 +214,7 @@ footer {
     color: white;
     padding: 20px; /* Térköz a footer tartalmán belül */
     width: 100%; /* Teljes szélesség */
+    height: 40px;
     display: flex; /* Flexbox a footerben */
     justify-content: space-between; /* Balra és jobbra igazítás */
     align-items: center; /* Középre igazítás vertikálisan */
@@ -205,4 +225,120 @@ footer {
 
 footer p {
     margin: 0; /* Margin eltávolítása a footerben */
+}
+
+#menu-toggle {
+  opacity: 0;
+}
+#menu-toggle:checked + .menu-btn > span {
+  transform: rotate(45deg);
+}
+#menu-toggle:checked + .menu-btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+#menu-toggle:checked + .menu-btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu-toggle:checked ~ .menu-box {
+  left: 0 !important;
+}
+.menu-btn {
+  position: absolute;
+  top: 45%;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+  /*margin: 25px auto;*/
+  
+}
+.menu-btn > span,
+.menu-btn > span::before,
+.menu-btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #616161;
+  transition-duration: .25s;
+}
+.menu-btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu-btn > span::after {
+  content: '';
+  top: 8px;
+}
+.menu-box {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #ECEFF1;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+}
+.menu-item {
+  display: block;
+  padding: 12px 24px;
+  color: #333;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+.menu-item:hover {
+  background-color: #CFD8DC;
+}
+
+.navbar {
+box-shadow: 0px 5px 10px 0px #aaa;
+position: fixed;
+width: 100%;
+background: #fff;
+color: #000;
+opacity: 0.85;
+height: 50px;
+z-index: 12;
+}
+
+.navbar-container {
+display: flex;
+justify-content: space-between;
+height: 64px;
+align-items: center;
+}
+
+.menu-items {
+order: 2;
+display: flex;
+}
+
+.menu-items li {
+list-style: none;
+margin-left: 1.5rem;
+margin-bottom: 0.5rem;
+font-size: 1.2rem;
+}
+
+.menu-items a {
+text-decoration: none;
+color: #444;
+font-weight: 500;
+transition: color 0.3s ease-in-out;
+}
+
+.menu-items a:hover {
+color: #117964;
+transition: color 0.3s ease-in-out;
 }

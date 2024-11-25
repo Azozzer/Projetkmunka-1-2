@@ -8,12 +8,22 @@
 </head>
 <body> 
     <header>
-        <img src="szetf.png" alt="SZE Tanulmányi Fórum" class="logo">
-        <h1>SZE Tanulmányi Fórum</h1>
-        <nav>
-            <a href="#" class="menu-item" onclick="window.location.href='fooldal.html';">Főoldal</a>
-            <a href="#" class="menu-item" onclick="window.location.href='login.html';">Bejelentkezés</a>
-        </nav>
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <span></span>
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='login.html';">Bejelentkezés</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+        </div>
+        <h1 class="header-title">SZE Tanulmányi Fórum</h1>
+        <!--<nav>
+            <a href="#" class="login-item" onclick="window.location.href='login.html';">Bejelentkezés</a>
+        </nav>-->
     </header>
 
     <main>
@@ -44,4 +54,3 @@
     </footer>
 </body>
 </html>
-
