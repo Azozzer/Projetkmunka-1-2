@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="uzenet.css">
@@ -8,11 +9,21 @@
 </head>
 <body>
     <header>
-        <img src="sze.png" alt="SZE Tanulmányi Fórum" class="logo">
-        <h1>SZE Tanulmányi Fórum</h1>
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <span></span>
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='profil.html';">Profilom</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+        </div>
+        <h1 class="header-title">SZE Tanulmányi Fórum</h1>
         <nav>
-            <a href="#" class="menu-item" onclick="window.location.href='fooldal.html';">Főoldal</a>
-            <a href="#" class="menu-item">Bejelentkezés</a>
+            <a href="#" class="login-item">Bejelentkezés</a>
         </nav>
     </header>
 
