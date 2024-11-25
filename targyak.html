@@ -17,49 +17,50 @@
             </label>
             <ul class="menu-box">
                 <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
-                <li><a class="menu-item" href="#" onclick="window.location.href='profil.html';">Profilom</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='login.html';">Bejelentkezés</a></li>
                 <li><a class="menu-item" href="#">Services</a></li>
                 <li><a class="menu-item" href="#">Contact</a></li>
             </ul>
         </div>
-        <h1>SZE Tanulmányi Fórum</h1>
+        <h1 class="header-title">SZE Tanulmányi Fórum</h1>
 
         <nav>
-            <a href="#" class="login-item" onclick="window.location.href='login.html';">Bejelentkezés</a>
+            
         </nav>
     </header>
 
     <main>
-        
+        <div class="box">
         
         <!--Téma létrehozása-->
-        <form action="tema_elonezet.html" method="POST">
-            <h2 class="tema">Új téma létrehozása</h2>
-            <!--Téma neve-->
-            <section class="tema-elnevezes">
-                <label for="tema-nev">Téma neve:  
-                    <input id="tema-nev" name="tema-nev" type="text" maxlength="100" required placeholder="Adja meg a téma nevét *">
-                </label>
-            </section>
+            <form action="tema_elonezet.html" method="POST">
+                <h2 class="tema">Új téma létrehozása</h2>
+                <!--Téma neve-->
+                <section class="tema-elnevezes">
+                    <label for="tema-nev">Téma neve:  
+                        <input id="tema-nev" name="tema-nev" type="text" maxlength="100" required placeholder="Adja meg a téma nevét *">
+                    </label>
+                </section>
 
 
-            <!--Leírás mező-->
-            <section class="leiras-text">
-                <label for="leiras">Leírás (opcionális): 
-                    <textarea id="leiras" name="leiras" maxlength="1500" placeholder="Ide írhatja a feltöltendő téma leírását..."></textarea>
-                </label>
-            </section>
+                <!--Leírás mező-->
+                <section class="leiras-text">
+                    <label for="leiras">Leírás (opcionális): 
+                        <textarea id="leiras" name="leiras" maxlength="1500" placeholder="Ide írhatja a feltöltendő téma leírását..."></textarea>
+                    </label>
+                </section>
 
-            <!--Fájl feltöltése-->
-            <section class="file-feltoltes">
-                <input type="file" class="file-upload" required/>
-            </section>
+                <!--Fájl feltöltése-->
+                <section class="file-feltoltes">
+                    <input type="file" class="file-upload" required/>
+                </section>
 
-            <!--Küldés gomb-->
-            <section class="kuldesgomb">
-                <button type="submit">Küldés</button>
-            </section>
-        </form>
+                <!--Küldés gomb-->
+                <section class="kuldesgomb">
+                    <button type="submit">Küldés</button>
+                </section>
+            </form>
+        </div>
     </main>
 
 

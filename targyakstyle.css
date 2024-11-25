@@ -1,5 +1,3 @@
-
-
 html, body {
     height: 100%;
     margin: 0;
@@ -37,26 +35,29 @@ body::before {
 }
 
 header {
-    background-color: #283454;
-    color: white;
-    padding: 20px;
-    width: calc(100% - 40px);
-    position: fixed;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-    height: 50px;
+  background-color: #283454; /* Sötét kék */
+  color: white;
+  padding: 20px;
+  padding-bottom: 5px;
+  width: calc(100% - 40px); /* Teljes szélesség - a padding figyelembevételével */
+  height: 40px;
+  position: fixed; /* A fejléc a lap tetején rögzítve */
+  top: 0; /* A tetejére rögzíti */
+  display: flex; /* Flexbox használata */
+  align-items: center; /* Vertikális középre igazítás */
+  justify-content: space-between; /* Térköz a kép és a középső szöveg között */
+  z-index: 1000; /* A fejléc a legfelső rétegen */
 }
 
-h1 {
-    flex: 1;
-    text-align: center;
-    margin: 0;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 24px;
-    font-weight: 1000;
+h1.header-title {
+  position: absolute; /* Leválasztja a többi elemtől */
+  left: 50%; /* A bal oldal 50%-a */
+  top: 5%;
+  transform: translateX(-50%); /* Visszahúzza a szöveget a saját közepére */
+  /*margin: 0;*/
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center; /* A szöveg középre igazítása */
 }
 
 #menu-toggle {
@@ -77,14 +78,14 @@ h1 {
     left: 0 !important;
   }
   .menu-btn {
-    position: fixed;
-    top: 20px;
+    position: absolute;
+    top: 45%;
     left: 20px;
     width: 26px;
     height: 26px;
     cursor: pointer;
     z-index: 1;
-    margin: 25px auto;
+    /*margin: 25px auto;*/
     
   }
   .menu-btn > span,
@@ -203,10 +204,16 @@ h1 {
 }
 
 main {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 100px;
+  width: 100%;
+  padding: 20px;
+  flex-grow: 1;
 }
+
 form {
     display: flex;
     flex-direction: column;
@@ -227,6 +234,7 @@ form input[type="text"],
 form select,
 form textarea,
 form .file-upload {
+    font-family: 'Space Grotesk', sans-serif;
     width: 100%;
     padding: 10px;
     font-size: 1rem;
@@ -245,6 +253,7 @@ form textarea {
 
 /* Gomb stílus */
 .kuldesgomb button {
+    font-family: 'Space Grotesk', sans-serif;
     width: 100%;
     padding: 10px;
     font-size: 1rem;
@@ -259,22 +268,39 @@ form textarea {
     background-color: #283454;
 }
 
+.box {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.box h2 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
 
 
 footer {
-    background-color: #283454; /* Sötét kék */
-    color: white;
-    padding: 20px; /* Térköz a footer tartalmán belül */
-    width: 100%; /* Teljes szélesség */
-    display: flex; /* Flexbox a footerben */
-    justify-content: space-between; /* Balra és jobbra igazítás */
-    align-items: center; /* Középre igazítás vertikálisan */
-    position: fixed; /* Rögzítési pozíció */
-    bottom: 0; /* Az aljára rögzítése */
-    flex-shrink: 0; /* Footer nem zsugorodik össze */
-    height: 50px;
-    
-  }
+  background-color: #283454; /* Sötét kék */
+  color: white;
+  padding: 20px; /* Térköz a footer tartalmán belül */
+  width: 100%; /* Teljes szélesség */
+  height: 40px;
+  display: flex; /* Flexbox a footerben */
+  justify-content: space-between; /* Balra és jobbra igazítás */
+  align-items: center; /* Középre igazítás vertikálisan */
+  position: relative; /* Rögzítési pozíció */
+  bottom: 0; /* Az aljára rögzítése */
+  flex-shrink: 0; /* Footer nem zsugorodik össze */
+}
+
   .contact-section h2, p {
     padding-left: 15px;
   }
