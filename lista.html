@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="lista.css">
@@ -8,27 +9,40 @@
 </head>
 <body>
     <header>
-        <img src="szetf.png" alt="SZE Tanulmányi Fórum" class="logo">
-        <h1>SZE Tanulmányi Fórum</h1>
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <span></span>
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='login.html';">Bejelentkezés</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+        </div>
+        <h1 class="header-title">SZE Tanulmányi Fórum</h1>
         <nav>
-            <a href="#" class="menu-item" onclick="window.location.href='fooldal.html';">Főoldal</a>
-            <a href="#" class="menu-item" onclick="window.location.href='login.html';">Bejelentkezés</a>
+            
         </nav>
     </header>
 
     <main>
-        <div class="math-topics">
-            <h2>Matek 1 Témák</h2>
-            <ul>
-                <li><a href="minta1.html">Minta 1</a></li>
-                <li><a href="minta2.html">Minta 2</a></li>
-                <li><a href="minta3.html">Minta 3</a></li>
-                <li><a href="minta4.html">Minta 4</a></li>
-                <li><a href="minta5.html">Minta 5</a></li>
-                <li><a href="minta6.html">Minta 6</a></li>
-                <li><a href="minta7.html">Minta 7</a></li>
-                <li><a href="minta8.html">Minta 8</a></li>
-            </ul>
+        <div class="content-container">
+            <div class="math-topics">
+                <h2>Matek 1 Témák</h2>
+                <ul>
+                    <li><a href="minta1.html">Minta 1</a></li>
+                    <li><a href="minta2.html">Minta 2</a></li>
+                    <li><a href="minta3.html">Minta 3</a></li>
+                    <li><a href="minta4.html">Minta 4</a></li>
+                    <li><a href="minta5.html">Minta 5</a></li>
+                    <li><a href="minta6.html">Minta 6</a></li>
+                    <li><a href="minta7.html">Minta 7</a></li>
+                    <li><a href="minta8.html">Minta 8</a></li>
+                </ul>
+            </div>
+            <button type="post" class="uj-tema" onclick="window.location.href='targyak.html';">Új téma létrehozása</button>
         </div>
     </main>
 
