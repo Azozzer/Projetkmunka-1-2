@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reg.css">
@@ -8,11 +9,21 @@
 </head>
 <body>
     <header>
-        <img src="szetf.png" alt="SZE Tanulmányi Fórum" class="logo">
-        <h1>SZE Tanulmányi Fórum</h1>
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <span></span>
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='login.html';">Bejelentkezés</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+        </div>
+        <h1 class="header-title">SZE Tanulmányi Fórum</h1>
         <nav>
-            <a href="fooldal.html" class="menu-item">Főoldal</a>
-            <a href="login.html" class="menu-item">Bejelentkezés</a>
+            
         </nav>
     </header>
 
@@ -22,19 +33,23 @@
             <form action="profil.html" method="post">
                 <div class="form-group">
                     <label for="new-username"><b>Felhasználónév</b> (Ezt látják a fórumózok)</label>
-                    <input type="text" id="new-username" name="username" required placeholder="Válassz felhasználónevet">
-                </div>
-                <div class="form-group">
-                    <label for="email"><b>Email cím</b></label>
-                    <input type="email" id="email" name="email" required placeholder="Adja meg az email címét">
+                    <input type="text" id="new-username" name="username" required placeholder="Válassz felhasználónevet*">
+                    <span class="tooltip">Példa: forum_user123</span>
                 </div>
                 <div class="form-group">
                     <label for="new-password"><b>Jelszó</b></label>
-                    <input type="password" id="new-password" name="password" required placeholder="Válassz jelszót">
+                    <input type="password" id="new-password" name="password" required placeholder="Válassz jelszót*">
+                    <span class="tooltip">Tipp: Használj számot, speciális karaktert, kis és nagybetűket</span>
                 </div>
                 <div class="form-group">
                     <label for="confirm-password"><b>Jelszó megerősítése</b></label>
-                    <input type="password" id="confirm-password" name="confirm_password" required placeholder="Erősítse meg a jelszót">
+                    <input type="password" id="confirm-password" name="confirm_password" required placeholder="Erősítse meg a jelszót*">
+                    <span class="tooltip">Tipp: Az előzőleg megadott jelszót erősítsd meg.</span>
+                </div>
+                <div class="form-group">
+                    <label for="email"><b>Email cím</b></label>
+                    <input type="email" id="email" name="email" required placeholder="Adja meg az email címét*">
+                    <span class="tooltip">Példa: pelda.peter@pelda.com</span>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="register-button">Regisztráció</button>
