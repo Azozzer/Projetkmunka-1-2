@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
-
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Space Grotesk', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,50 +20,56 @@ body::before {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: 
-        linear-gradient(10deg, rgba(0, 128, 255, 0.6) 25%, transparent 75%),
-        linear-gradient(25deg, rgba(255, 165, 0, 0.2) 15%, transparent 85%),
-        linear-gradient(35deg, rgba(255, 255, 0, 0.2) 15%, transparent 85%),
-        linear-gradient(45deg, rgba(210, 105, 30, 0.2) 15%, transparent 85%),
-        linear-gradient(55deg, rgba(50, 205, 50, 0.1) 10%, transparent 90%),
-        linear-gradient(65deg, rgba(0, 128, 0, 0.2) 15%, transparent 85%),
-        linear-gradient(75deg, rgba(135, 206, 250, 0.6) 25%, transparent 75%),
-        linear-gradient(85deg, rgba(128, 0, 128, 0.1) 15%, transparent 85%),
-        linear-gradient(95deg, rgba(112, 128, 144, 0.05) 10%, transparent 90%);
+    background-color: whitesmoke;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
 header {
-    background-color: #283454;
-    color: white;
-    padding: 20px;
-    width: calc(100% - 40px);
-    position: fixed;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
+  background-color: #283454; /* Sötét kék */
+  color: white;
+  padding: 20px;
+  padding-bottom: 5px;
+  width: calc(100% - 40px); /* Teljes szélesség - a padding figyelembevételével */
+  height: 40px;
+  position: fixed; /* A fejléc a lap tetején rögzítve */
+  top: 0; /* A tetejére rögzíti */
+  display: flex; /* Flexbox használata */
+  align-items: center; /* Vertikális középre igazítás */
+  justify-content: space-between; /* Térköz a kép és a középső szöveg között */
+  z-index: 1000; /* A fejléc a legfelső rétegen */
 }
 
-h1 {
-    flex: 1;
-    text-align: center;
-    margin: 0;
-    font-size: 24px;
-    font-weight: 700;
+h1.header-title {
+  position: absolute; /* Leválasztja a többi elemtől */
+  left: 50%; /* A bal oldal 50%-a */
+  top: 5%;
+  transform: translateX(-50%); /* Visszahúzza a szöveget a saját közepére */
+  /*margin: 0;*/
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center; /* A szöveg középre igazítása */
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 50px; /* Kép szélessége */
+    height: 50px; /* Kép magassága */
     margin-right: 20px;
 }
 
 nav {
     display: flex;
-    gap: 30px;
+    gap: 30px; /* Térköz a menüpontok között */
+}
+
+.login-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.login-item:hover {
+    text-decoration: underline;
 }
 
 .menu-item {
@@ -83,33 +87,26 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 100px; /* Header magassága miatt */
+    margin-top: 100px;
     width: 100%;
     padding: 20px;
-    flex-grow: 1; /* Engedi a fő tartalomnak, hogy növekedjen */
+    flex-grow: 1;
 }
 
 footer {
-    background-color: #283454;
-    color: white;
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute; /* Rögzített az oldal alján */
-    bottom: 0;
-    left: 0;
-    flex-shrink: 0;
+  background-color: #283454; /* Sötét kék */
+  color: white;
+  padding: 20px; /* Térköz a footer tartalmán belül */
+  width: 100%; /* Teljes szélesség */
+  height: 40px;
+  display: flex; /* Flexbox a footerben */
+  justify-content: space-between; /* Balra és jobbra igazítás */
+  align-items: center; /* Középre igazítás vertikálisan */
+  position: relative; /* Rögzítési pozíció */
+  bottom: 0; /* Az aljára rögzítése */
+  flex-shrink: 0; /* Footer nem zsugorodik össze */
 }
 
-footer.fixed {
-    position: fixed; /* Ha a footer mindig fixen az alján kell lenni */
-    left: 0;
-    bottom: 0;
-}
-
-/* Login Form Styles */
 .login-form {
     width: 100%;
     max-width: 400px;
@@ -122,22 +119,22 @@ footer.fixed {
 .login-form h2 {
     font-size: 28px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
     color: #333;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 label {
-    font-size: 16px;
+    font-size: 12px;
     color: #555;
     display: block;
-    margin-bottom: 5px;
+    
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"] {
     width: 100%;
     padding: 12px;
     font-size: 16px;
@@ -146,12 +143,23 @@ input[type="text"], input[type="password"] {
     box-sizing: border-box;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
+input[type="text"]:focus, input[type="password"], input[type="email"]:focus {
     border-color: #08b4dc;
     outline: none;
 }
 
+input::placeholder {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+i {
+    line-height: 1.6;
+    display: block;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
 .login-button {
+    font-family: 'Space Grotesk', sans-serif;
     width: 100%;
     padding: 12px;
     background-color: #08b4dc;
@@ -167,9 +175,25 @@ input[type="text"]:focus, input[type="password"]:focus {
     background-color: #007ba8;
 }
 
+.password-reminder {
+    width: 100%;
+    padding: 12px;
+    background-color: #08b4dc;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.password-reminder:hover {
+    background-color: #007ba8;
+}
+
 .register-link {
     text-align: center;
-    margin-top: 15px;
+    font-size: 12px;
 }
 
 .register-link a {
@@ -178,5 +202,143 @@ input[type="text"]:focus, input[type="password"]:focus {
 }
 
 .register-link a:hover {
+    text-decoration: underline;
+}
+
+#menu-toggle {
+  opacity: 0;
+}
+#menu-toggle:checked + .menu-btn > span {
+  transform: rotate(45deg);
+}
+#menu-toggle:checked + .menu-btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+#menu-toggle:checked + .menu-btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu-toggle:checked ~ .menu-box {
+  left: 0 !important;
+}
+.menu-btn {
+  position: absolute;
+  top: 45%;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+  /*margin: 25px auto;*/
+  
+}
+.menu-btn > span,
+.menu-btn > span::before,
+.menu-btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #616161;
+  transition-duration: .25s;
+}
+.menu-btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu-btn > span::after {
+  content: '';
+  top: 8px;
+}
+.menu-box {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #ECEFF1;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+}
+.menu-item {
+  display: block;
+  padding: 12px 24px;
+  color: #333;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+.menu-item:hover {
+  background-color: #CFD8DC;
+}
+
+.navbar {
+  box-shadow: 0px 5px 10px 0px #aaa;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  color: #000;
+  opacity: 0.85;
+  height: 50px;
+  z-index: 12;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+}
+
+.menu-items {
+  order: 2;
+  display: flex;
+}
+
+.menu-items li {
+  list-style: none;
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.menu-items a:hover {
+  color: #117964;
+  transition: color 0.3s ease-in-out;
+}
+
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: auto;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+/*.menu-item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}*/
+
+.menu-item:hover {
     text-decoration: underline;
 }

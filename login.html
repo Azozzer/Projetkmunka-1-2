@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
-    <title>SZE Tanulmányi Fórum - Regisztráció</title>
+    <title>SZE Tanulmányi Fórum - Bejelentkezés</title>
 </head>
 <body>
     <header>
-        <img src="szetf.png" alt="SZE Tanulmányi Fórum" class="logo">
-        <h1>SZE Tanulmányi Fórum</h1>
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <img src="szetf.png" alt="Menu Icon" class="logo" />
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='profil.html';">Profilom</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+        </div>
+        <h1 class="header-title">SZE Tanulmányi Fórum</h1>
         <nav>
-            <a href="fooldal.html" class="menu-item">Főoldal</a>
-            <a href="login.html" class="menu-item">Bejelentkezés</a>
+            <!--<a href="login.html" class="login-item">Bejelentkezés</a>-->
         </nav>
     </header>
-
     <main>
-        <div class="register-form">
-            <h2>Regisztráció</h2>
+        <div class="login-form">
+            <h2>Bejelentkezés</h2>
             <form action="profil.html" method="post">
                 <div class="form-group">
-                    <label for="new-username"><b>Felhasználónév</b> (Ezt látják a fórumózok)</label>
-                    <input type="text" id="new-username" name="username" required placeholder="Válassz felhasználónevet">
+                    <label for="username"><b>Felhasználónév</b></label>
+                    <input type="text" id="username" name="username" required placeholder="Adja meg a felhasználónevét*">
                 </div>
                 <div class="form-group">
-                    <label for="email"><b>Email cím</b></label>
-                    <input type="email" id="email" name="email" required placeholder="Adja meg az email címét">
+                    <label for="password"><b>Jelszó</b></label>
+                    <input type="password" id="password" name="password" required placeholder="Adja meg a jelszavát*">
                 </div>
                 <div class="form-group">
-                    <label for="new-password"><b>Jelszó</b></label>
-                    <input type="password" id="new-password" name="password" required placeholder="Válassz jelszót">
+                    <button type="submit" class="login-button">Bejelentkezés</button>
                 </div>
                 <div class="form-group">
-                    <label for="confirm-password"><b>Jelszó megerősítése</b></label>
-                    <input type="password" id="confirm-password" name="confirm_password" required placeholder="Erősítse meg a jelszót">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="register-button">Regisztráció</button>
+                    <label for="remember-password">
+                        <input type="checkbox" id="remember-password" name="remember-password">
+                        Megjegyezze a jelszót?
+                    </label>
                 </div>
             </form>
-            <div class="login-link">
-                <p>Van már fiókod? <a href="login.html">Jelentkezz be itt</a></p>
+            <div class="register-link">
+                <p>Még nincs fiókod? <a href="reg.html">Regisztrálj itt</a></p>
             </div>
-        </div>
+            <div class="register-link">
+                <p>Elfelejtetted a jelszavad? <a href="reminder.html">Kattints ide</a></p>
+            </div>
+        </div> 
     </main>
-
     <footer>
         <div class="contact-section">
             <h2>Kapcsolat</h2>
