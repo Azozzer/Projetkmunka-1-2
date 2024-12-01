@@ -1,344 +1,416 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: 'Space Grotesk', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    margin: 0;
-    background-color: white;
-    position: relative;
-    overflow-x: hidden;
-    padding: 0 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  background-color: whitesmoke;
+  position: relative;
+  overflow-x: hidden;
+  padding: 0 20px;
 }
 
 body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-color: whitesmoke;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: whitesmoke;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 header {
-  background-color: #283454; /* Sötét kék */
+  background-color: #283454;
   color: white;
-  padding: 20px;
-  padding-bottom: 5px;
-  width: calc(100% - 40px); /* Teljes szélesség - a padding figyelembevételével */
-  height: 40px;
-  position: fixed; /* A fejléc a lap tetején rögzítve */
-  top: 0; /* A tetejére rögzíti */
-  display: flex; /* Flexbox használata */
-  align-items: center; /* Vertikális középre igazítás */
-  justify-content: space-between; /* Térköz a kép és a középső szöveg között */
-  z-index: 1000; /* A fejléc a legfelső rétegen */
+  padding: 10px 20px;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1.header-title {
-  position: absolute; /* Leválasztja a többi elemtől */
-  left: 50%; /* A bal oldal 50%-a */
-  top: 5%;
-  transform: translateX(-50%); /* Visszahúzza a szöveget a saját közepére */
-  /*margin: 0;*/
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center; /* A szöveg középre igazítása */
+header h1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
 }
 
 .logo {
-    width: 50px; /* Kép szélessége */
-    height: 50px; /* Kép magassága */
-    margin-right: 20px;
+  width: 50px; /* Kép szélessége */
+  height: 50px; /* Kép magassága */
+  margin-right: 20px;
 }
 
 nav {
-    display: flex;
-    gap: 30px; /* Térköz a menüpontok között */
+  display: flex;
+  gap: 30px; /* Térköz a menüpontok között */
 }
 
 .login-item {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 .login-item:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .menu-item {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 .menu-item:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+.tooltip {
+  visibility: hidden; /* Alapértelmezetten rejtett */
+  background-color: #0dd1d4;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: relative;
+  top: 100%;
+  left: 0%;
+  transform: translateX(-50%);
+  margin-top: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.form-group:hover .tooltip {
+  visibility: visible;
+  opacity: 1; /* Tooltip megjelenítése */
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 100px;
-    width: 100%;
-    padding: 20px;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Középre igazítás */
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 100px; /* Fejléc után legyen egy kis távolság */
+  padding: 20px;
+  gap: 20px;
 }
-
 footer {
-  background-color: #283454; /* Sötét kék */
+  background-color: #283454;
   color: white;
-  padding: 20px; /* Térköz a footer tartalmán belül */
-  width: 100%; /* Teljes szélesség */
-  height: 40px;
-  display: flex; /* Flexbox a footerben */
-  justify-content: space-between; /* Balra és jobbra igazítás */
-  align-items: center; /* Középre igazítás vertikálisan */
-  position: relative; /* Rögzítési pozíció */
-  bottom: 0; /* Az aljára rögzítése */
-  flex-shrink: 0; /* Footer nem zsugorodik össze */
+  padding: 10px 20px;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Balra igazítás */
+  z-index: 1000;
 }
 
 .login-form {
-    width: 100%;
-    max-width: 400px;
-    padding: 40px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .login-form h2 {
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 35px;
-    color: #333;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 35px;
+  color: #333;
 }
 
 .form-group {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 label {
-    font-size: 12px;
-    color: #555;
-    display: block;
-    
+  font-size: 12px;
+  color: #555;
+  display: block;
 }
 
 input[type="text"], input[type="password"], input[type="email"] {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 input[type="text"]:focus, input[type="password"], input[type="email"]:focus {
-    border-color: #08b4dc;
-    outline: none;
+  border-color: #08b4dc;
+  outline: none;
 }
 
 input::placeholder {
-    font-family: 'Space Grotesk', sans-serif;
-  }
+  font-family: 'Space Grotesk', sans-serif;
+}
 
 i {
-    line-height: 1.6;
-    display: block;
-    margin-bottom: 20px;
-    font-size: 16px;
+  line-height: 1.6;
+  display: block;
+  margin-bottom: 20px;
+  font-size: 16px;
 }
+
 .login-button {
-    font-family: 'Space Grotesk', sans-serif;
-    width: 100%;
-    padding: 12px;
-    background-color: #08b4dc;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  width: 100%;
+  padding: 12px;
+  background-color: #08b4dc;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .login-button:hover {
-    background-color: #007ba8;
+  background-color: #007ba8;
 }
 
 .password-reminder {
-    width: 100%;
-    padding: 12px;
-    background-color: #08b4dc;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 12px;
+  background-color: #08b4dc;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .password-reminder:hover {
-    background-color: #007ba8;
+  background-color: #007ba8;
 }
 
 .register-link {
-    text-align: center;
-    font-size: 12px;
+  text-align: center;
+  font-size: 12px;
 }
 
 .register-link a {
-    color: #08b4dc;
-    text-decoration: none;
+  color: #08b4dc;
+  text-decoration: none;
 }
 
 .register-link a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 #menu-toggle {
-  opacity: 0;
+opacity: 0;
 }
+
 #menu-toggle:checked + .menu-btn > span {
-  transform: rotate(45deg);
+transform: rotate(45deg);
 }
+
 #menu-toggle:checked + .menu-btn > span::before {
-  top: 0;
-  transform: rotate(0deg);
+top: 0;
+transform: rotate(0deg);
 }
+
 #menu-toggle:checked + .menu-btn > span::after {
-  top: 0;
-  transform: rotate(90deg);
+top: 0;
+transform: rotate(90deg);
 }
+
 #menu-toggle:checked ~ .menu-box {
-  left: 0 !important;
+left: 0 !important;
 }
+
 .menu-btn {
-  position: absolute;
-  top: 45%;
-  left: 20px;
-  width: 26px;
-  height: 26px;
-  cursor: pointer;
-  z-index: 1;
-  /*margin: 25px auto;*/
-  
+position: absolute;
+top: 45%;
+left: 20px;
+width: 26px;
+height: 26px;
+cursor: pointer;
+z-index: 1;
 }
+
 .menu-btn > span,
 .menu-btn > span::before,
 .menu-btn > span::after {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: #616161;
-  transition-duration: .25s;
+display: block;
+position: absolute;
+width: 100%;
+height: 2px;
+background-color: #616161;
+transition-duration: .25s;
 }
+
 .menu-btn > span::before {
-  content: '';
-  top: -8px;
+content: '';
+top: -8px;
 }
+
 .menu-btn > span::after {
-  content: '';
-  top: 8px;
+content: '';
+top: 8px;
 }
+
 .menu-box {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 300px;
-  height: 100%;
-  margin: 0;
-  padding: 80px 0;
-  list-style: none;
-  background-color: #ECEFF1;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
-  transition-duration: .25s;
+display: block;
+position: fixed;
+top: 0;
+left: -100%;
+width: 300px;
+height: 100%;
+margin: 0;
+padding: 80px 0;
+list-style: none;
+background-color: #ECEFF1;
+box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+transition-duration: .25s;
 }
+
 .menu-item {
-  display: block;
-  padding: 12px 24px;
-  color: #333;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  text-decoration: none;
-  transition-duration: .25s;
+display: block;
+padding: 12px 24px;
+color: #333;
+font-family: 'Space Grotesk', sans-serif;
+font-size: 20px;
+font-weight: 600;
+text-decoration: none;
+transition-duration: .25s;
 }
+
 .menu-item:hover {
-  background-color: #CFD8DC;
+background-color: #CFD8DC;
 }
 
 .navbar {
-  box-shadow: 0px 5px 10px 0px #aaa;
-  position: fixed;
-  width: 100%;
-  background: #fff;
-  color: #000;
-  opacity: 0.85;
-  height: 50px;
-  z-index: 12;
+box-shadow: 0px 5px 10px 0px #aaa;
+position: fixed;
+width: 100%;
+background: #fff;
+color: #000;
+opacity: 0.85;
+height: 50px;
+z-index: 12;
 }
 
 .navbar-container {
-  display: flex;
-  justify-content: space-between;
-  height: 64px;
-  align-items: center;
+display: flex;
+justify-content: space-between;
+height: 64px;
+align-items: center;
 }
 
 .menu-items {
-  order: 2;
-  display: flex;
+order: 2;
+display: flex;
 }
 
 .menu-items li {
-  list-style: none;
-  margin-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+list-style: none;
+margin-left: 1.5rem;
+margin-bottom: 0.5rem;
+font-size: 1.2rem;
 }
 
 .menu-items a {
-  text-decoration: none;
-  color: #444;
-  font-weight: 500;
-  transition: color 0.3s ease-in-out;
+text-decoration: none;
+color: #444;
+font-weight: 500;
+transition: color 0.3s ease-in-out;
 }
 
 .menu-items a:hover {
-  color: #117964;
-  transition: color 0.3s ease-in-out;
+color: #117964;
+transition: color 0.3s ease-in-out;
 }
 
-
 .logo {
-    width: 50px;
-    height: 50px;
-    margin-right: auto;
+  width: 50px;
+  height: 50px;
+  margin-right: auto;
 }
 
 nav {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
-/*.menu-item {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}*/
+/* Kezdő stílusok */
+.info-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
 
-.menu-item:hover {
-    text-decoration: underline;
+.info-trigger {
+  font-size: 24px;
+  font-weight: bold;
+  color: #08b4dc;
+  transition: color 0.3s;
+}
+
+.info-trigger:hover {
+  color: #007ba8;
+}
+
+.info-toggle {
+  display: none; /* Rejtjük a checkbox-ot */
+}
+
+.info-card {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 200px;
+  height: 220px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.5s ease, opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Ha a checkbox be van jelölve, akkor a kártya kicsusszan */
+.info-toggle:checked + .info-trigger + .info-card {
+  transform: translateX(0); /* Kicsúszik a jobb oldalról */
+  opacity: 1;
+  visibility: visible;
 }
