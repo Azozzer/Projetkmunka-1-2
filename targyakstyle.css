@@ -16,7 +16,7 @@ body {
     margin: 0;
     background-color: white;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;  /*mint az x mint az y tengely görgethetőségét elrejti*/
     padding: 0;
     
 }
@@ -38,9 +38,7 @@ header {
   background-color: #283454; /* Sötét kék */
   color: white;
   padding: 20px;
-  padding-bottom: 5px;
   width: calc(100% - 40px); /* Teljes szélesség - a padding figyelembevételével */
-  height: 40px;
   position: fixed; /* A fejléc a lap tetején rögzítve */
   top: 0; /* A tetejére rögzíti */
   display: flex; /* Flexbox használata */
@@ -52,9 +50,8 @@ header {
 h1.header-title {
   position: absolute; /* Leválasztja a többi elemtől */
   left: 50%; /* A bal oldal 50%-a */
-  top: 5%;
   transform: translateX(-50%); /* Visszahúzza a szöveget a saját közepére */
-  /*margin: 0;*/
+  margin: 0;
   font-size: 24px;
   font-weight: 700;
   text-align: center; /* A szöveg középre igazítása */
@@ -179,7 +176,7 @@ h1.header-title {
 .tema {
     text-align: center;
     font-size: 20px;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 
@@ -210,7 +207,7 @@ main {
   justify-content: flex-start;
   margin-top: 100px;
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   flex-grow: 1;
 }
 
@@ -218,7 +215,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-top: 150px;
+    padding-top: 20px;
     width: 560px;
 }
 
@@ -253,15 +250,16 @@ form textarea {
 
 /* Gomb stílus */
 .kuldesgomb button {
-    font-family: 'Space Grotesk', sans-serif;
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #283454;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  background-color: #283454;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .kuldesgomb button:hover {
@@ -269,9 +267,12 @@ form textarea {
 }
 
 .box {
+  display: flex;  /* flex-re állítom a boxot */
+  justify-content: center;  /* Horizontális középre igazítást valósít meg */
+  align-items: center;  /* Vertikális középre igazítást valósít meg */
   width: 100%;
-  max-width: 800px;
-  margin: 40px auto;
+  max-width: 650px;
+  margin: auto;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 16px;
@@ -281,7 +282,7 @@ form textarea {
 .box h2 {
   font-size: 28px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #333;
 }
 
@@ -292,7 +293,7 @@ footer {
   color: white;
   padding: 20px; /* Térköz a footer tartalmán belül */
   width: 100%; /* Teljes szélesség */
-  height: 40px;
+  height: 35px;
   display: flex; /* Flexbox a footerben */
   justify-content: space-between; /* Balra és jobbra igazítás */
   align-items: center; /* Középre igazítás vertikálisan */
