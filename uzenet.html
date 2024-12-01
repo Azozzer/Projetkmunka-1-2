@@ -22,39 +22,19 @@
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
-        <nav>
-            <a href="#" class="login-item">Bejelentkezés</a>
-        </nav>
     </header>
 
     <main>
         <div class="message-board">
             <h2>Üzenőfal</h2>
             
-            <div class="messages">
-                <!-- Korábbi üzenetek -->
-                <div class="message">
-                    <img src="profilepic.jpg" alt="Profil" class="profile-pic">
-                    <div class="message-content">
-                        <p><strong>Admin</strong></p>
-                        <p>Szia! Semmi extra.</p>
-                        <img src="cutecat.jpg" alt="Kép" class="message-image">
-                        <a href="#" class="message-link"></a>
-                    </div>
-                </div>
-                <div class="message">
-                    <img src="profilepic2.jpg" alt="Profil" class="profile-pic">
-                    <div class="message-content">
-                        <p><strong>Moderátor</strong></p>
-                        <p>Szia! Mi újság?</p>
-                        <a href="#" class="message-link">Link</a>
-                    </div>
-                </div>
+            <div class="messages" id="messages-container">
+                <!-- Üzenetek itt jelennek meg -->
             </div>
 
-            <form class="message-form">
-                <textarea placeholder="Írj egy üzenetet..." required></textarea>
-                <input type="file" accept="image/*" class="file-upload" />
+            <form class="message-form" id="message-form">
+                <textarea placeholder="Írj egy üzenetet..." id="message-input" required></textarea>
+                <input type="file" accept="image/*" class="file-upload" id="file-upload"/>
                 <button type="submit">Küldés</button>
             </form>
         </div>
@@ -66,5 +46,7 @@
             <p>Email: asdasd@sze.hu</p>
         </div>
     </footer>
+
+    <script src="uzenet.js"></script> <!-- A JavaScript fájlunk -->
 </body>
 </html>
