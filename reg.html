@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reg.css">
+    <link rel="stylesheet" href="login.css">
     <title>SZE Tanulmányi Fórum - Regisztráció</title>
 </head>
 <body>
@@ -22,17 +22,14 @@
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
-        <nav>
-            
-        </nav>
     </header>
 
     <main>
-        <div class="register-form">
+        <div class="login-form">
             <h2>Regisztráció</h2>
-            <form action="profil.html" method="post">
+            <form id="registrationForm" action="profil.html" method="post">
                 <div class="form-group">
-                    <label for="new-username"><b>Felhasználónév</b> (Ezt látják a fórumózok)</label>
+                    <label for="new-username"><b>Felhasználónév</b></label>
                     <input type="text" id="new-username" name="username" required placeholder="Válassz felhasználónevet*">
                     <span class="tooltip">Példa: forum_user123</span>
                 </div>
@@ -52,10 +49,10 @@
                     <span class="tooltip">Példa: pelda.peter@pelda.com</span>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="register-button">Regisztráció</button>
+                    <button type="submit" class="login-button">Regisztráció</button>
                 </div>
             </form>
-            <div class="login-link">
+            <div class="register-link">
                 <p>Van már fiókod? <a href="login.html">Jelentkezz be itt</a></p>
             </div>
         </div>
@@ -66,9 +63,9 @@
             event.preventDefault();
 
             const userData = {
-                username: document.getElementById("username").value,
+                username: document.getElementById("new-username").value,
                 email: document.getElementById("email").value,
-                password: document.getElementById("password").value
+                password: document.getElementById("new-password").value
             };
 
             fetch("https://localhost:5001/api/user/register", {
