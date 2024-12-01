@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>SZE Tanulmányi Fórum - Emlékeztető</title>
+</head>
+<body>
+    <header>
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <span></span>
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='profil.html';">Profilom</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+        </div>
+        <h1 class="header-title">SZE Tanulmányi Fórum</h1>
+    </header>
+
+    <main>
+        <div class="login-form">
+            <h2>Jelszó emlékeztető</h2>
+            <i></i>
+            
+            <div class="info-container">
+                <input type="checkbox" id="info-toggle" class="info-toggle">
+                <label for="info-toggle" class="info-trigger"><b>Információ</b></label>
+                <div class="info-card">
+                  <p>Amennyiben elfelejtetted a jelszavad ne aggódj. Az oldalon használt felhasználó neved és email címednek megadásával egy új jelszót küldünk az emailcímedre.</p>
+                </div>
+              </div>              
+              
+
+            <form id="password-reminder">
+                <div class="form-group">
+                    <label for="username"><b>Felhasználónév</b></label>
+                    <input type="text" id="username" name="username" required placeholder="Adja meg a felhasználónevét*">
+                </div>
+                <div class="form-group">
+                    <label for="email"><b>Email cím</b></label>
+                    <input type="email" id="email" name="email" required placeholder="Adja meg az email címet*">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="password-reminder">Jelszó emlékeztető küldése</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Az információs gomb működtetése
+        document.querySelector('.info-btn').addEventListener('click', function() {
+            var infoText = document.getElementById('infoText');
+            if (infoText.style.display === "none" || infoText.style.display === "") {
+                infoText.style.display = "block";
+            } else {
+                infoText.style.display = "none";
+            }
+        });
+
+        document.getElementById('password-reminder').addEventListener ('submit', function(event) {
+            event.preventDefault();
+            alert('A jelszó emlékeztetőt az email címedre sikeresen elküldtük!')
+        });
+    </script>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Kapcsolat</h2>
+            <p>Email: asdasd@sze.hu</p>
+        </div>
+    </footer>
+</body>
+</html>
