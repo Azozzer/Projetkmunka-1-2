@@ -1,54 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
 body {
-    font-family: 'Space Grotesk', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    margin: 0;
-    background-color: white;
-    position: relative;
-    overflow-x: hidden;
-    padding: 0 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  background-color: whitesmoke;
+  position: relative;
+  overflow-x: hidden;
+  padding: 0 20px;
 }
 
 body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-color: whitesmoke;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: whitesmoke;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
+/* Fejléc */
 header {
-  background-color: #283454; /* Sötét kék */
+  background-color: #283454;
   color: white;
-  padding: 20px;
-  padding-bottom: 5px;
-  width: calc(100% - 40px); /* Teljes szélesség - a padding figyelembevételével */
-  height: 40px;
-  position: fixed; /* A fejléc a lap tetején rögzítve */
-  top: 0; /* A tetejére rögzíti */
-  display: flex; /* Flexbox használata */
-  align-items: center; /* Vertikális középre igazítás */
-  justify-content: space-between; /* Térköz a kép és a középső szöveg között */
-  z-index: 1000; /* A fejléc a legfelső rétegen */
+  padding: 10px 20px;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1.header-title {
-  position: absolute; /* Leválasztja a többi elemtől */
-  left: 50%; /* A bal oldal 50%-a */
-  top: 5%;
-  transform: translateX(-50%); /* Visszahúzza a szöveget a saját közepére */
-  /*margin: 0;*/
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center; /* A szöveg középre igazítása */
+header h1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
 }
 
 .logo {
@@ -164,26 +171,24 @@ input::placeholder {
 }
 
 footer {
-  background-color: #283454; /* Sötét kék */
+  background-color: #283454;
   color: white;
-  padding: 20px; /* Térköz a footer tartalmán belül */
-  width: 100%; /* Teljes szélesség */
-  height: 40px;
-  display: flex; /* Flexbox a footerben */
-  justify-content: space-between; /* Balra és jobbra igazítás */
-  align-items: center; /* Középre igazítás vertikálisan */
-  position: relative; /* Rögzítési pozíció */
-  bottom: 0; /* Az aljára rögzítése */
-  flex-shrink: 0; /* Footer nem zsugorodik össze */
-}
-.contact-section h2 {
-    margin: 0;
-    font-size: 20px;
+  padding: 10px 20px;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Balra igazítás */
+  z-index: 1000;
 }
 
 footer p {
-    margin: 15px 0;
+  margin: 0;
+  font-size: 14px;
 }
+
 
 #menu-toggle {
   opacity: 0;
