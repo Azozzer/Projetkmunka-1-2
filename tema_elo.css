@@ -1,5 +1,3 @@
-
-
 body {
     font-family: 'Space Grotesk', sans-serif;
     display: flex;
@@ -29,141 +27,143 @@ body::before {
 }
 
 header {
-    background-color: #283454;
-    color: white;
-    padding: 20px;
-    width: calc(100% - 40px);
-    position: fixed;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-    height: 50px;
+  background-color: #283454; /* Sötét kék */
+  color: white;
+  padding: 20px;
+  width: calc(100% - 40px); /* Teljes szélesség - a padding figyelembevételével */
+  position: fixed; /* A fejléc a lap tetején rögzítve */
+  top: 0; /* A tetejére rögzíti */
+  display: flex; /* Flexbox használata */
+  align-items: center; /* Vertikális középre igazítás */
+  justify-content: space-between; /* Térköz a kép és a középső szöveg között */
+  z-index: 1000; /* A fejléc a legfelső rétegen */
 }
 
-h1 {
-    flex: 1;
-    text-align: center;
-    margin: 0;
-    font-size: 24px;
-    font-weight: 700;
+h1.header-title {
+  position: absolute; /* Leválasztja a többi elemtől */
+  left: 50%; /* A bal oldal 50%-a */
+  transform: translateX(-50%); /* Visszahúzza a szöveget a saját közepére */
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center; /* A szöveg középre igazítása */
 }
+
 
 #menu-toggle {
-    opacity: 0;
-  }
-  #menu-toggle:checked + .menu-btn > span {
-    transform: rotate(45deg);
-  }
-  #menu-toggle:checked + .menu-btn > span::before {
-    top: 0;
-    transform: rotate(0deg);
-  }
-  #menu-toggle:checked + .menu-btn > span::after {
-    top: 0;
-    transform: rotate(90deg);
-  }
-  #menu-toggle:checked ~ .menu-box {
-    left: 0 !important;
-  }
-  .menu-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
-    z-index: 1;
-    margin: 25px auto;
-    
-  }
-  .menu-btn > span,
-  .menu-btn > span::before,
-  .menu-btn > span::after {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #616161;
-    transition-duration: .25s;
-  }
-  .menu-btn > span::before {
-    content: '';
-    top: -8px;
-  }
-  .menu-btn > span::after {
-    content: '';
-    top: 8px;
-  }
-  .menu-box {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 300px;
-    height: 100%;
-    margin: 0;
-    padding: 80px 0;
-    list-style: none;
-    background-color: #ECEFF1;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
-    transition-duration: .25s;
-  }
-  .menu-item {
-    display: block;
-    padding: 12px 24px;
-    color: #333;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: none;
-    transition-duration: .25s;
-  }
-  .menu-item:hover {
-    background-color: #CFD8DC;
-  }
+  opacity: 0;
+}
+#menu-toggle:checked + .menu-btn > span {
+  transform: rotate(45deg);
+}
+#menu-toggle:checked + .menu-btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+#menu-toggle:checked + .menu-btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu-toggle:checked ~ .menu-box {
+  left: 0 !important;
+}
+.menu-btn {
+  position: absolute;
+  top: 45%;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+  /*margin: 25px auto;*/
+  
+}
+.menu-btn > span,
+.menu-btn > span::before,
+.menu-btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #616161;
+  transition-duration: .25s;
+}
+.menu-btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu-btn > span::after {
+  content: '';
+  top: 8px;
+}
+.menu-box {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #ECEFF1;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+}
+.menu-item {
+  display: block;
+  padding: 12px 24px;
+  color: #333;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+.menu-item:hover {
+  background-color: #CFD8DC;
+}
 
 .navbar {
-  box-shadow: 0px 5px 10px 0px #aaa;
-  position: fixed;
-  width: 100%;
-  background: #fff;
-  color: #000;
-  opacity: 0.85;
-  height: 50px;
-  z-index: 12;
+box-shadow: 0px 5px 10px 0px #aaa;
+position: fixed;
+width: 100%;
+background: #fff;
+color: #000;
+opacity: 0.85;
+height: 50px;
+z-index: 12;
 }
 
 .navbar-container {
-  display: flex;
-  justify-content: space-between;
-  height: 64px;
-  align-items: center;
+display: flex;
+justify-content: space-between;
+height: 64px;
+align-items: center;
 }
 
 .menu-items {
-  order: 2;
-  display: flex;
+order: 2;
+display: flex;
 }
 
 .menu-items li {
-  list-style: none;
-  margin-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+list-style: none;
+margin-left: 1.5rem;
+margin-bottom: 0.5rem;
+font-size: 1.2rem;
 }
 
 .menu-items a {
-  text-decoration: none;
-  color: #444;
-  font-weight: 500;
-  transition: color 0.3s ease-in-out;
+text-decoration: none;
+color: #444;
+font-weight: 500;
+transition: color 0.3s ease-in-out;
 }
 
 .menu-items a:hover {
-  color: #117964;
-  transition: color 0.3s ease-in-out;
+color: #117964;
+transition: color 0.3s ease-in-out;
 }
 
 
@@ -189,14 +189,14 @@ nav {
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 100px;
-    width: 100%;
-    padding: 20px;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 100px;
+  width: 100%;
+  padding: 20px;
+  flex-grow: 1;
 }
 
 .temabox {
@@ -211,10 +211,37 @@ main {
     
 }
 
+
+
 .temabox h2 {
     text-align: center;
 }
 
+.button-container {
+  display: flex;                /* Flexbox aktiválása */
+  justify-content: center;      /* Gombok horizontális középre helyezése */
+  align-items: center;          /* Gombok vertikális középre helyezése */
+  height: 30px;                /* A doboz magassága */
+  gap: 10px;                    /* Hézag a gombok között */
+}
+
+button {
+  font-family: 'Space Grotesk', sans-serif;
+  width: 100%;
+  padding: 10px;
+  
+  margin: 10px;
+  font-size: 16px;
+  background-color: #283454;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
 
 
 footer {
@@ -222,15 +249,15 @@ footer {
   color: white;
   padding: 20px; /* Térköz a footer tartalmán belül */
   width: 100%; /* Teljes szélesség */
+  height: 40px;
   display: flex; /* Flexbox a footerben */
   justify-content: space-between; /* Balra és jobbra igazítás */
   align-items: center; /* Középre igazítás vertikálisan */
-  position: fixed; /* Rögzítési pozíció */
+  position: relative; /* Rögzítési pozíció */
   bottom: 0; /* Az aljára rögzítése */
   flex-shrink: 0; /* Footer nem zsugorodik össze */
-  height: 50px;
-  
 }
+
 .contact-section h2, p {
   padding-left: 15px;
 }
