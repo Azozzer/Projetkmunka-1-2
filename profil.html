@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="profil.css">
     <title>SZE Tanulmányi Fórum - Profil</title>
+    <script defer src="profil.js"></script> <!-- JS betöltése -->
 </head>
 <body>
     <header>
@@ -22,9 +23,6 @@
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
-        <nav>
-            
-        </nav>
     </header>
 
     <main>
@@ -33,31 +31,28 @@
             <div class="profile-info">
                 <img src="profiletest.png" alt="Profilkép" class="profile-pic">
                 <div class="info-details">
-                    <h3><strong>Felhasználónév</strong></h3>
-                    <i>Hallgató</i>
-                    <p><strong>Témák száma:</strong> 12</p>
-                    <p><strong>Hozzászólások száma:</strong> 22</p>
-                    <b>Reputáció</b>
-                    <div class="likes-dislikes">
-                        <div class="likes">
-                            <img src="up.png" alt="Like" class="like-icon">
-                            <span class="like-count">45</span>
-                        </div>
-                        <div class="dislikes">
-                            <img src="down.png" alt="Dislike" class="dislike-icon">
-                            <span class="dislike-count">3</span>
+                    <h3 id="username"><strong>Felhasználónév</strong></h3>
+                    <div class="stat-section">
+                        <p><strong>Témák száma:</strong> <span id="topic-count">0</span></p>
+                        <p><strong>Hozzászólások száma:</strong> <span id="comment-count">0</span></p>
+                        <p><strong>Reputáció:</strong></p>
+                        <div class="likes-dislikes">
+                            <div class="likes">
+                                <img src="up.png" alt="Like" class="like-icon">
+                                <span id="like-count">0</span>
+                            </div>
+                            <div class="dislikes">
+                                <img src="down.png" alt="Dislike" class="dislike-icon">
+                                <span id="dislike-count">0</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="user-topics">
                 <h3>Témáim</h3>
-                <ul>
-                    <li><a href="#">Téma 1</a></li>
-                    <li><a href="#">Téma 2</a></li>
-                    <li><a href="#">Téma 3</a></li>
-                    <li><a href="#">Téma 4</a></li>
-                    <li><a href="#">Téma 5</a></li>
+                <ul id="topic-list">
+                    <!-- Témák dinamikusan betöltve -->
                 </ul>
             </div>
             <a href="#" class="message-button" onclick="window.location.href='uzenet.html';">Üzenet írása</a>
