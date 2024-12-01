@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
@@ -21,16 +22,18 @@
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
-        <!--<nav>
-            <a href="#" class="login-item" onclick="window.location.href='login.html';">Bejelentkezés</a>
-        </nav>-->
     </header>
 
     <main>
         <!-- Kereső sáv -->
         <div class="search-bar">
             <input type="text" placeholder="Keresendő téma..." id="searchInput">
-            <button>Keresés</button>
+            <button onclick="searchTopics()">Keresés</button>
+        </div>
+
+        <!-- Eredmények megjelenítése -->
+        <div id="searchResults" class="search-results">
+            <!-- Keresési találatok ide kerülnek -->
         </div>
 
         <div class="grid">
@@ -52,5 +55,48 @@
             <p>Email: asdasd@sze.hu</p>
         </div>
     </footer>
+
+    <script>
+        // Tesztadatok
+        const topics = [
+            { name: "Járműmérnöki Kar", description: "Mérnöki képzések, autóipari szakirányok." },
+            { name: "Pedagógiai Kar", description: "Pedagógiai és társadalomtudományi képzések." },
+            { name: "Mosonmagyaróvári Kar", description: "Agrár- és mérnöki szakok." },
+            { name: "Építész Kar", description: "Építőmérnöki, közlekedési mérnöki szakok." },
+            { name: "Gazdaságtudományi Kar", description: "Gazdasági és pénzügyi képzések." },
+            { name: "Informatikai Kar", description: "Informatikai, villamosmérnöki képzések." },
+            { name: "Egészségtudományi Kar", description: "Egészségügyi, sporttudományi képzések." },
+            { name: "Állam- és Jogtudományi Kar", description: "Jogászképzés, jogi alapú tudományok." },
+            { name: "Művészeti Kar", description: "Művészeti képzések, vizuális művészetek." }
+        ];
+
+        // Keresési funkció
+        function searchTopics() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const results = topics.filter(topic => topic.name.toLowerCase().includes(query) || topic.description.toLowerCase().includes(query));
+
+            // Két eseménykezelő, ha nincs találat vagy van
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';  // Töröljük a korábbi eredményeket
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<p>Nincs találat.</p>';
+            } else {
+                const topResults = results.slice(0, 3);  // Csak az első 3 találatot jelenítjük meg
+                topResults.forEach(result => {
+                    const resultElement = document.createElement('div');
+                    resultElement.classList.add('search-result-item');
+                    resultElement.innerHTML = `
+                        <div class="tile">
+                            <h3>${result.name}</h3>
+                            <p>${result.description}</p>
+                        </div>
+                    `;
+                    resultsContainer.appendChild(resultElement);
+                });
+            }
+        }
+    </script>
+
 </body>
 </html>
