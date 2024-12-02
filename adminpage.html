@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="adminstyle.css">
+    <title>Adminisztátori felület - Jóváhagyásra váró értékelések</title>
+    <script>
+        // Hozzászólások és azok státuszának tárolása
+        const topics = [
+            {
+                id: 1,
+                name: 'Hozzászólás 1',
+                status: 'pending', // várakozó
+                type: 'Matematika', // típus
+                author: 'Kovács János', // szerző
+                justification: 'Érdekes megoldásokat tartalmaz.', // indoklás
+                timestamp: '2024-12-01 14:30' // feltöltés időpontja
+            },
+            {
+                id: 2,
+                name: 'Hozzászólás 2',
+                status: 'approved', // jóváhagyott
+                type: 'Fizika', // típus
+                author: 'Nagy Anna', // szerző
+                justification: 'Szakszerű és pontos válasz.', // indoklás
+                timestamp: '2024-11-30 09:15' // feltöltés időpontja
+            },
+            {
+                id: 3,
+                name: 'Minta 3',
+                status: 'rejected', // elutasított
+                type: 'Kémia', // típus
+                author: 'Szabó Péter', // szerző
+                justification: 'A hozzászólás nem releváns.', // indoklás
+                timestamp: '2024-12-02 11:20' // feltöltés időpontja
+            },
+            {
+                id: 4,
+                name: 'Minta 4',
+                status: 'pending', // várakozó
+                type: 'Biológia', // típus
+                author: 'Tóth Laura', // szerző
+                justification: 'Hasznos kiegészítő információk.', // indoklás
+                timestamp: '2024-12-01 16:00' // feltöltés időpontja
+            }
+        ];
+
+        // A hozzászólásokat megjelenítő funkció
+        function displayTopics() {
+            const listContainer = document.getElementById('topics-list');
+            listContainer.innerHTML = ''; // Kiürítjük a listát
+
+            // Minden hozzászólás átvizsgálása és megjelenítése
+            topics.forEach(topic => {
+                if (topic.status === 'pending') {
+                    // Csak a "pending" státuszú hozzászólások jelennek meg
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <a href="hozzaszolas${topic.id}.html">
+                            <div class="topic-details">
+                                <h3>${topic.name}</h3>
+                                <p><strong>Típus:</strong> ${topic.type}</p>
+                                <p><strong>Szerző:</strong> ${topic.author}</p>
+                                <p><strong>Indoklás:</strong> ${topic.justification}</p>
+                                <p><strong>Feltöltés ideje:</strong> ${topic.timestamp}</p>
+                                <button class="pipa" type="button" onclick="acceptTopic('${topic.name}')">
+                                    <img src="accept.png" class="ikon" alt="Accept">
+                                </button>
+                                <button type="button" onclick="deleteTopic('${topic.name}')">
+                                    <img src="bin.png" class="ikon" alt="Delete">
+                                </button>
+                            </div>
+                        </a>
+                    `;
+                    listContainer.appendChild(listItem);
+                }
+            });
+        }
+
+        // Hozzászólás elfogadása
+        function acceptTopic(topicName) {
+            alert('Az értékelés elfogadva: ' + topicName);
+            // Itt egy adatbázis frissítést is végezhetnél, például az "approved" státuszra állítani
+        }
+
+        // Hozzászólás törlése (elutasítás)
+        function deleteTopic(topicName) {
+            if (confirm('Biztosan el szeretnéd utasítani ezt az értékelést?')) {
+                alert('Az értékelés törölve: ' + topicName);
+                // Itt egy adatbázis frissítést is végezhetnél, például a "rejected" státuszra állítani
+            }
+        }
+
+        // Oldal betöltésekor a hozzászólások megjelenítése
+        window.onload = function() {
+            displayTopics();
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <span></span>
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="fooldal.html">Főoldal</a></li>
+                <li><a class="menu-item" href="login.html">Bejelentkezés</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+        </div>
+        <h1 class="header-title">SZE Tanulmányi Fórum</h1>
+    </header>
+
+    <main>
+        <div class="content-container">
+            <div class="math-topics">
+                <h2>Jóváhagyásra váró értékelések</h2>
+                <ul id="topics-list"></ul> <!-- Itt jelennek meg a hozzászólások -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Kapcsolat</h2>
+            <p>Email: asdasd@sze.hu</p>
+        </div>
+    </footer>
+</body>
+</html>

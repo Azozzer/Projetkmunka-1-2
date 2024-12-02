@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="adminstyle.css">
+    <title>Adminisztátori felület - Jóváhagyásra váró témák</title>
+    <script>
+        function acceptTopic(topic) {
+            alert('A téma elfogadva: ' + topic);
+        }
+
+        function deleteTopic(topic) {
+            if (confirm('Biztosan törölni szeretnéd ezt a témát?')) {
+                alert('A téma törölve: ' + topic);
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="hamburger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
+                <span></span>
+            </label>
+            <ul class="menu-box">
+                <li><a class="menu-item" href="fooldal.html">Főoldal</a></li>
+                <li><a class="menu-item" href="login.html">Bejelentkezés</a></li>
+                <li><a class="menu-item" href="#">Services</a></li>
+                <li><a class="menu-item" href="#">Contact</a></li>
+            </ul>
+        </div>
+        <h1 class="header-title">SZE Tanulmányi Fórum</h1>
+    </header>
+
+    <main>
+        <div class="content-container">
+            <div class="math-topics">
+                <h2>Jóváhagyásra váró témák</h2>
+                <ul>
+                    <li>
+                        <a href="minta1.html">
+                            <button class="pipa" type="button" onclick="acceptTopic('Minta 1')">
+                                <img src="accept.png" class="ikon" alt="Accept">
+                            </button>
+                            <button type="button" onclick="deleteTopic('Minta 1')">
+                                <img src="bin.png" class="ikon" alt="Delete">
+                            </button>
+                            Minta 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="minta2.html">
+                            <button class="pipa" type="button" onclick="acceptTopic('Minta 2')">
+                                <img src="accept.png" class="ikon" alt="Accept">
+                            </button>
+                            <button type="button" onclick="deleteTopic('Minta 2')">
+                                <img src="bin.png" class="ikon" alt="Delete">
+                            </button>
+                            Minta 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="minta3.html">
+                            <button class="pipa" type="button" onclick="acceptTopic('Minta 3')">
+                                <img src="accept.png" class="ikon" alt="Accept">
+                            </button>
+                            <button type="button" onclick="deleteTopic('Minta 3')">
+                                <img src="bin.png" class="ikon" alt="Delete">
+                            </button>
+                            Minta 3
+                        </a>
+                    </li>
+                    <li>
+                        <a href="minta4.html">
+                            <button class="pipa" type="button" onclick="acceptTopic('Minta 4')">
+                                <img src="accept.png" class="ikon" alt="Accept">
+                            </button>
+                            <button type="button" onclick="deleteTopic('Minta 4')">
+                                <img src="bin.png" class="ikon" alt="Delete">
+                            </button>
+                            Minta 4
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contact-section">
+            <h2>Kapcsolat</h2>
+            <p>Email: asdasd@sze.hu</p>
+        </div>
+    </footer>
+</body>
+</html>

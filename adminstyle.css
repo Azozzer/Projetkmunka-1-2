@@ -1,0 +1,255 @@
+/* Alapértelmezett stílusok */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: whitesmoke;
+  position: relative;
+  overflow-x: hidden;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* Fejléc */
+header {
+  background-color: #283454;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hamburger-menu {
+  display: flex;
+  gap: 10px;
+}
+
+
+.ikon {
+  margin-right: 15px;
+  height: 15px;
+  width: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button {
+  border: none;    /* Törli a gomb körvonalát */
+  outline: none;   /* Törli a gomb fókusz körvonalát */
+  background: transparent; /* Átlátszó háttér a gombokon */
+}
+
+
+.menu-btn {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.menu-btn > span,
+.menu-btn > span::before,
+.menu-btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #616161;
+  transition-duration: .25s;
+}
+
+.menu-btn > span::before {
+  content: '';
+  top: -8px;
+}
+
+.menu-btn > span::after {
+  content: '';
+  top: 8px;
+}
+
+/* Navigációs menü */
+.menu-box {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #ECEFF1;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+}
+
+.menu-item {
+  display: block;
+  padding: 12px 24px;
+  color: #333;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+
+.menu-item:hover {
+  background-color: #CFD8DC;
+}
+
+/* Main content */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 100px;
+  width: 100%;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+/* Hozzáadott doboz */
+.content-container {
+  width: 100%;
+  max-width: 900px; /* Biztosítja, hogy ne legyen túl széles */
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px; /* Egy kis távolság a fejléc alatt */
+}
+
+.math-topics {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.math-topics h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.math-topics ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.math-topics li {
+  margin: 10px 0;
+}
+
+.math-topics a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #08b4dc;
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.math-topics a:hover {
+  background-color: #e8e8e8;
+  text-decoration: underline;
+}
+
+/* Új téma gomb - a box mellé, jobb oldalon */
+.uj-tema {
+  font-family: 'Space Grotesk', sans-serif;
+  padding: 12px 16px;
+  background-color: #08b4dc;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  top: 120px; /* A gomb a content box teteje után lesz */
+  right: 20px; /* Jobb oldalon */
+}
+
+.uj-tema:hover {
+  background-color: #007ba8;
+}
+
+/* Footer */
+footer {
+  background-color: #283454;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 1000;
+}
+
+.contact-section {
+  font-size: 14px;
+}
+
+.contact-section h2 {
+  font-size: 18px;
+}
+
+.contact-section p {
+  margin: 5px 0;
+}
+
+/* Menu toggle */
+#menu-toggle {
+  display: none;
+}
+
+#menu-toggle:checked + .menu-btn > span {
+  top: 0;
+  transform: rotate(0deg);
+}
+
+#menu-toggle:checked + .menu-btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+#menu-toggle:checked ~ .menu-box {
+  left: 0 !important;
+}
