@@ -16,9 +16,7 @@
             </label>
             <ul class="menu-box">
                 <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
-                <li><a class="menu-item" href="#" onclick="window.location.href='profil.html';">Profilom</a></li>
-                <li><a class="menu-item" href="#">Services</a></li>
-                <li><a class="menu-item" href="#">Contact</a></li>
+                <li><a class="menu-item" href="#" onclick="window.location.href='login.html';">Bejelentkezés</a></li>
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
@@ -26,7 +24,7 @@
     <main>
         <div class="login-form">
             <h2>Bejelentkezés</h2>
-            <form action="profil.html" method="post">
+            <form onsubmit="return login(event)">
                 <div class="form-group">
                     <label for="username"><b>Felhasználónév</b></label>
                     <input type="text" id="username" name="username" required placeholder="Adja meg a felhasználónevét*">
@@ -59,5 +57,29 @@
             <p>Email: asdasd@sze.hu</p>
         </div>
     </footer>
+
+    <script>
+        function login(event) {
+            event.preventDefault(); // Megakadályozza, hogy a form elküldje az adatokat
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // A bejelentkezés ellenőrzése (tesztadatokkal)
+            if (username === "user" && password === "password") {
+                // Sikeres bejelentkezés
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('role', 'user'); // Beállítjuk a szerepkört
+                window.location.href = 'fooldal.html'; // Visszairányítjuk a főoldalra
+            } else if (username === "admin" && password === "admin") {
+                // Admin bejelentkezés
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('role', 'admin');
+                window.location.href = 'fooldal.html'; // Visszairányítjuk a főoldalra
+            } else {
+                alert('Hibás felhasználónév vagy jelszó');
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>
