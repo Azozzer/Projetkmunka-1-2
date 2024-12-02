@@ -16,9 +16,17 @@
             </label>
             <ul class="menu-box">
                 <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
-                <li><a class="menu-item" href="#" onclick="window.location.href='login.html';">Bejelentkezés</a></li>
-                <li><a class="menu-item" href="#">Services</a></li>
-                <li><a class="menu-item" href="#">Contact</a></li>
+                <!-- Bejelentkezés előtt -->
+                <li id="loginItem"><a class="menu-item" href="login.html">Bejelentkezés</a></li>
+
+                <!-- Bejelentkezés után -->
+                <li id="logoutItem" style="display:none;"><a class="menu-item" href="#" onclick="logout()">Kijelentkezés</a></li>
+                <li id="profileItem" style="display:none;"><a class="menu-item" href="#">Profilom</a></li>
+                <li id="messagesItem" style="display:none;"><a class="menu-item" href="#">Üzenetek</a></li>
+                <li id="topicsItem" style="display:none;"><a class="menu-item" href="#">Témáim</a></li>
+
+                <!-- Admin panel csak admin szerepkör esetén -->
+                <li id="adminPanel" style="display:none;"><a class="menu-item" href="#">Adminisztrátori Panel</a></li>
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
@@ -57,45 +65,80 @@
     </footer>
 
     <script>
-        // Tesztadatok
-        const topics = [
-            { name: "Járműmérnöki Kar", description: "Mérnöki képzések, autóipari szakirányok." },
-            { name: "Pedagógiai Kar", description: "Pedagógiai és társadalomtudományi képzések." },
-            { name: "Mosonmagyaróvári Kar", description: "Agrár- és mérnöki szakok." },
-            { name: "Építész Kar", description: "Építőmérnöki, közlekedési mérnöki szakok." },
-            { name: "Gazdaságtudományi Kar", description: "Gazdasági és pénzügyi képzések." },
-            { name: "Informatikai Kar", description: "Informatikai, villamosmérnöki képzések." },
-            { name: "Egészségtudományi Kar", description: "Egészségügyi, sporttudományi képzések." },
-            { name: "Állam- és Jogtudományi Kar", description: "Jogászképzés, jogi alapú tudományok." },
-            { name: "Művészeti Kar", description: "Művészeti képzések, vizuális művészetek." }
-        ];
+        // Kezdeti állapot
+        let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Ellenőrizzük, hogy a localStorage-ban tároltuk-e a bejelentkezett állapotot
+        let role = localStorage.getItem('role') || ''; // A felhasználó szerepköre (user/admin)
+
+        // Menü frissítése
+        function updateMenu() {
+            if (isLoggedIn) {
+                // Bejelentkezés után
+                document.getElementById('loginItem').style.display = 'none';
+                document.getElementById('logoutItem').style.display = 'block';
+                document.getElementById('profileItem').style.display = 'block';
+                document.getElementById('messagesItem').style.display = 'block';
+                document.getElementById('topicsItem').style.display = 'block';
+
+                if (role === 'admin') {
+                    document.getElementById('adminPanel').style.display = 'block';
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none';
+                }
+            } else {
+                // Bejelentkezés előtt
+                document.getElementById('loginItem').style.display = 'block';
+                document.getElementById('logoutItem').style.display = 'none';
+                document.getElementById('profileItem').style.display = 'none';
+                document.getElementById('messagesItem').style.display = 'none';
+                document.getElementById('topicsItem').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'none';
+            }
+        }
+
+        // Kijelentkezés logika
+        function logout() {
+            isLoggedIn = false;
+            role = ''; // Üres szerepkör
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('role');
+            updateMenu();
+        }
 
         // Keresési funkció
         function searchTopics() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const results = topics.filter(topic => topic.name.toLowerCase().includes(query) || topic.description.toLowerCase().includes(query));
-
-            // Két eseménykezelő, ha nincs találat vagy van
+            const query = document.getElementById('searchInput').value; // A keresési kifejezés
             const resultsContainer = document.getElementById('searchResults');
-            resultsContainer.innerHTML = '';  // Töröljük a korábbi eredményeket
+            resultsContainer.innerHTML = ''; // Üresítjük a keresési eredmények tartalmát
 
-            if (results.length === 0) {
-                resultsContainer.innerHTML = '<p>Nincs találat.</p>';
-            } else {
-                const topResults = results.slice(0, 3);  // Csak az első 3 találatot jelenítjük meg
-                topResults.forEach(result => {
-                    const resultElement = document.createElement('div');
-                    resultElement.classList.add('search-result-item');
-                    resultElement.innerHTML = `
-                        <div class="tile">
-                            <h3>${result.name}</h3>
-                            <p>${result.description}</p>
-                        </div>
-                    `;
-                    resultsContainer.appendChild(resultElement);
+            // AJAX kérés az adatbázisból való lekéréshez
+            fetch(`/api/topics?q=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(topics => {
+                    if (topics.length === 0) {
+                        resultsContainer.innerHTML = '<p>Nincs találat.</p>';
+                    } else {
+                        const topResults = topics.slice(0, 3); // Csak a legelső három találatot jelenítjük meg
+                        topResults.forEach(result => {
+                            const resultElement = document.createElement('div');
+                            resultElement.classList.add('search-result-item');
+                            resultElement.innerHTML = `
+                                <div class="tile">
+                                    <h3>${result.name}</h3>
+                                    <p>${result.description}</p>
+                                </div>
+                            `;
+                            resultsContainer.appendChild(resultElement);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Hiba történt a keresés során:', error);
+                    resultsContainer.innerHTML = '<p>Hiba történt a keresés során.</p>';
                 });
-            }
         }
+
+        // Kezdeti menü frissítés
+        updateMenu();
     </script>
 
 </body>
