@@ -31,7 +31,7 @@
             
             <div class="info-container">
                 <input type="checkbox" id="info-toggle" class="info-toggle">
-                <label for="info-toggle" class="info-trigger"><b>Információ</b></label>
+                <label for="info-toggle" class="info-trigger"><b><img src="information.png" class="ikon">Információ</b></label>
                 <div class="info-card">
                   <p>Amennyiben elfelejtetted a jelszavad ne aggódj. Az oldalon használt felhasználó neved és email címednek megadásával egy új jelszót küldünk az emailcímedre.</p>
                 </div>
@@ -55,19 +55,30 @@
     </main>
 
     <script>
-        // Az információs gomb működtetése
-        document.querySelector('.info-btn').addEventListener('click', function() {
-            var infoText = document.getElementById('infoText');
-            if (infoText.style.display === "none" || infoText.style.display === "") {
-                infoText.style.display = "block";
-            } else {
-                infoText.style.display = "none";
-            }
-        });
-
-        document.getElementById('password-reminder').addEventListener ('submit', function(event) {
+        document.getElementById('passwordReminderForm').addEventListener('submit', async (event) => {
             event.preventDefault();
-            alert('A jelszó emlékeztetőt az email címedre sikeresen elküldtük!')
+            const email = document.getElementById('email').value;
+
+            try {
+                const response = await fetch('/api/user/reminder', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+                const messageElement = document.getElementById('message');
+                if (response.ok) {
+                    messageElement.textContent = data.message;
+                    messageElement.style.color = 'green';
+                } else {
+                    messageElement.textContent = data.message;
+                    messageElement.style.color = 'red';
+                }
+            } catch (error) {
+                console.error('Hiba történt a jelszó-emlékeztető kérés során:', error);
+                document.getElementById('message').textContent = 'Hiba történt a jelszó-emlékeztető kérés során.';
+            }
         });
     </script>
 
