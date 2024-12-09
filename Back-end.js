@@ -155,10 +155,42 @@ app.post('/api/user/login', async (req, res) => {
     }
 });
 
+app.get('/api/user/status', (req, res) => {
+    if (req.session.isLoggedIn) {
+        res.status(200).json({
+            isLoggedIn: true,
+            userId: req.session.userId,
+            role: req.session.role
+        });
+    } else {
+        res.status(200).json({
+            isLoggedIn: false
+        });
+    }
+});
+
+app.post('/api/user/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            console.error('Hiba a kijelentkezés során:', err);
+            return res.status(500).json({ message: 'Hiba történt a kijelentkezés során.' });
+        }
+        res.status(200).json({ message: 'Sikeres kijelentkezés!' });
+    });
+});
+
+
 // Új téma létrehozása
 app.post('/api/targyak', upload.single('file'), async (req, res) => {
+    console.log('Feltöltött fájl:', req.file); // Ellenőrizd a konzolon
+    console.log('Kapott adatok:', req.body); // Ellenőrizd a szöveges adatokat
+
     const { temaNev, leiras } = req.body;
-    const filePath = req.file ? `/uploads/${req.file.filename}` : null;
+    const filePath = req.file ? `uploads/${req.file.filename}` : null;
+
+    if (!temaNev || !leiras) {
+        return res.status(400).json({ message: 'Hiányzó adatok.' });
+    }
 
     try {
         await db.promise().query('INSERT INTO targyak (title, description, file) VALUES (?, ?, ?)', [temaNev, leiras, filePath]);
@@ -166,6 +198,60 @@ app.post('/api/targyak', upload.single('file'), async (req, res) => {
     } catch (error) {
         console.error('Hiba a téma létrehozása során:', error);
         res.status(500).json({ message: 'Hiba történt a téma létrehozása során.' });
+    }
+});
+
+app.get('/api/topics', async (req, res) => {
+    try {
+        const [rows] = await db.promise().query('SELECT id, title AS tema_name FROM targyak WHERE status = "approved"');
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error('Hiba a témák lekérése során:', error);
+        res.status(500).json({ message: 'Hiba történt a témák lekérése során.' });
+    }
+});
+
+app.post('/api/topics', async (req, res) => {
+    const { title, description } = req.body;
+    try {
+        await db.promise().query('INSERT INTO targyak (title, description, status) VALUES (?, ?, "pending")', [title, description]);
+        res.status(201).json({ message: 'Téma létrehozva, adminisztrátori jóváhagyás szükséges!' });
+    } catch (error) {
+        console.error('Hiba a téma létrehozása során:', error);
+        res.status(500).json({ message: 'Hiba történt a téma létrehozása során.' });
+    }
+});
+
+
+app.put('/api/topics/approve/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        await db.promise().query('UPDATE targyak SET status = "approved" WHERE id = ?', [id]);
+        res.status(200).json({ message: 'Téma jóváhagyva!' });
+    } catch (error) {
+        console.error('Hiba a téma jóváhagyása során:', error);
+        res.status(500).json({ message: 'Hiba történt a téma jóváhagyása során.' });
+    }
+});
+
+app.delete('/api/topics/reject/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        await db.promise().query('DELETE FROM targyak WHERE id = ?', [id]);
+        res.status(200).json({ message: 'Téma elutasítva!' });
+    } catch (error) {
+        console.error('Hiba a téma elutasítása során:', error);
+        res.status(500).json({ message: 'Hiba történt a téma elutasítása során.' });
+    }
+});
+
+app.get('/api/topics/pending', async (req, res) => {
+    try {
+        const [rows] = await db.promise().query('SELECT * FROM targyak WHERE status = "pending"');
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error('Hiba a jóváhagyásra váró témák listázása során:', error);
+        res.status(500).json({ message: 'Hiba történt a témák lekérése során.' });
     }
 });
 
@@ -218,10 +304,62 @@ app.get('/api/topic/:id', async (req, res) => {
     }
 });
 
-// Szerver indítása
-const PORT = 5001;
-app.listen(PORT, () => console.log(`A szerver fut a ${PORT} porton.`));
+app.use('/upload', express.static(path.join(__dirname, 'upload'))); // Az `upload` mappa elérhetővé tétele
 
+app.get('/api/topic/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const [rows] = await db.promise().query('SELECT * FROM targyak WHERE id = ?', [id]);
+        if (rows.length === 0) {
+            return res.status(404).json({ message: 'Téma nem található.' });
+        }
+
+        // Fájlelérési út javítása
+        const topic = rows[0];
+        if (topic.file) {
+            topic.file = topic.file.startsWith('/uploads/') ? topic.file : `/uploads/${topic.file}`;
+        }
+
+        res.status(200).json(topic);
+    } catch (error) {
+        console.error('Hiba a téma részleteinek lekérése során:', error);
+        res.status(500).json({ message: 'Hiba történt a téma részleteinek lekérése során.' });
+    }
+});
+
+app.get('/api/user/profile/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const [user] = await db.promise().query('SELECT username, email, role FROM users WHERE user_id = ?', [id]);
+        if (user.length === 0) {
+            return res.status(404).json({ message: 'Felhasználó nem található.' });
+        }
+
+        res.status(200).json(user[0]);
+    } catch (error) {
+        console.error('Hiba a profil lekérdezése során:', error);
+        res.status(500).json({ message: 'Hiba történt a profil lekérdezése során.' });
+    }
+});
+
+app.put('/api/user/profile/:id', async (req, res) => {
+    const { id } = req.params;
+    const { username, email } = req.body;
+
+    try {
+        await db.promise().query('UPDATE users SET username = ?, email = ? WHERE user_id = ?', [username, email, id]);
+        res.status(200).json({ message: 'Profil sikeresen frissítve.' });
+    } catch (error) {
+        console.error('Hiba a profil frissítése során:', error);
+        res.status(500).json({ message: 'Hiba történt a profil frissítése során.' });
+    }
+});
+
+
+
+const PORT = 5001;
+app.listen(PORT, () => console.log(`Szerver fut: http://localhost:${PORT}`));
 
 const PORT = 5001;
 app.listen(PORT, () => {
