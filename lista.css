@@ -36,14 +36,14 @@ header {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.header-title {
+header h1 {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
   margin: 0 auto;
+  transform: translateX(-50%);
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
 }
 
 .hamburger-menu {
@@ -197,26 +197,16 @@ footer {
   color: white;
   padding: 10px 20px;
   width: 100%;
-  height: 50px;
+  height: 60px;
   position: fixed;
   bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start; /* Balra igazítás */
   z-index: 1000;
 }
 
-.contact-section {
-  font-size: 14px;
-}
 
-.contact-section h2 {
-  font-size: 18px;
-}
-
-.contact-section p {
-  margin: 5px 0;
-}
 
 /* Menu toggle */
 #menu-toggle {
