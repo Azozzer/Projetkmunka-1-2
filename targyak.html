@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +6,7 @@
     <link rel="stylesheet" href="targyakstyle.css">
     <title>SZE Tanulmányi Fórum</title>
 </head>
-
-<body> 
+<body>
     <header>
         <div class="hamburger-menu">
             <input id="menu-toggle" type="checkbox" />
@@ -18,59 +16,86 @@
             <ul class="menu-box">
                 <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
                 <li><a class="menu-item" href="#" onclick="window.location.href='login.html';">Bejelentkezés</a></li>
-                <li><a class="menu-item" href="#">Services</a></li>
-                <li><a class="menu-item" href="#">Contact</a></li>
+                <li><a class="menu-item" href="#">Szolgáltatások</a></li>
+                <li><a class="menu-item" href="#">Kapcsolat</a></li>
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
-
-        <nav>
-            
-        </nav>
     </header>
 
     <main>
         <div class="box">
-        
-        <!--Téma létrehozása-->
-            <form action="tema_elonezet.html" method="POST">
+            <form id="temaForm">
                 <h2 class="tema">Új téma létrehozása</h2>
-                <!--Téma neve-->
+                <!-- Téma neve -->
                 <section class="tema-elnevezes">
                     <label for="tema-nev">Téma neve:  
                         <input id="tema-nev" name="tema-nev" type="text" maxlength="100" required placeholder="Adja meg a téma nevét *">
                     </label>
                 </section>
 
-
-                <!--Leírás mező-->
+                <!-- Leírás mező -->
                 <section class="leiras-text">
-                    <label for="leiras">Leírás (opcionális): 
-                        <textarea id="leiras" name="leiras" maxlength="1500" placeholder="Ide írhatja a feltöltendő téma leírását..."></textarea>
+                    <label for="leiras">Leírás: 
+                        <textarea id="leiras" name="leiras" maxlength="1500" placeholder="Ide írhatja a feltöltendő téma leírását..." required></textarea>
                     </label>
                 </section>
 
-                <!--Fájl feltöltése-->
+                <!-- Fájl feltöltés -->
                 <section class="file-feltoltes">
-                    <input type="file" class="file-upload" required/>
+                    <input type="file" class="file-upload" id="file-upload"/>
                 </section>
 
-                <!--Küldés gomb-->
+                <!-- Küldés gomb -->
                 <section class="kuldesgomb">
-                    <button type="submit" href="#" onclick="window.location.href='tema_elonezet.html';">Küldés</button>
+                    <button type="submit">Küldés</button>
                 </section>
             </form>
         </div>
     </main>
 
-
-
     <footer>
         <div class="contact-section">
             <h2>Kapcsolat</h2>
             <p>Email: asdasd@sze.hu</p>
+        </div>
     </footer>
+
+    <script>
+        document.getElementById('temaForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            const temaNev = document.getElementById('tema-nev').value;
+            const leiras = document.getElementById('leiras').value;
+            const fileInput = document.getElementById('file-upload');
+            const file = fileInput.files[0];
+    
+            const formData = new FormData();
+            formData.append('temaNev', temaNev);
+            formData.append('leiras', leiras);
+            if (file) {
+                formData.append('file', file);
+            }
+    
+            fetch('http://localhost:5001/api/targyak', {
+                method: 'POST',
+                body: formData,
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    alert(data.message);
+                    window.location.href = '/lista.html';
+                })
+                .catch((error) => {
+                    console.error('Fetch hiba:', error);
+                    alert('Hiba történt a mentés során.');
+                });
+        });
+    </script>    
 </body>
-
-
 </html>
