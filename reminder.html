@@ -15,10 +15,13 @@
                 <span></span>
             </label>
             <ul class="menu-box">
-                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
-                <li><a class="menu-item" href="#" onclick="window.location.href='profil.html';">Profilom</a></li>
-                <li><a class="menu-item" href="#">Services</a></li>
-                <li><a class="menu-item" href="#">Contact</a></li>
+                <li><a class="menu-item" href="fooldal.html">Főoldal</a></li>
+                <li id="loginItem"><a class="menu-item" href="login.html">Bejelentkezés</a></li>
+                <li id="logoutItem" style="display:none;"><a class="menu-item" href="#" onclick="logout()">Kijelentkezés</a></li>
+                <li id="profileItem" style="display:none;"><a class="menu-item" href="#">Profilom</a></li>
+                <li id="messagesItem" style="display:none;"><a class="menu-item" href="#">Üzenetek</a></li>
+                <li id="topicsItem" style="display:none;"><a class="menu-item" href="#">Témáim</a></li>
+                <li id="adminPanel" style="display:none;"><a class="menu-item" href="#">Adminisztrátori Panel</a></li>
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
@@ -27,22 +30,16 @@
     <main>
         <div class="login-form">
             <h2>Jelszó emlékeztető</h2>
-            <i></i>
             
             <div class="info-container">
                 <input type="checkbox" id="info-toggle" class="info-toggle">
                 <label for="info-toggle" class="info-trigger"><b><img src="information.png" class="ikon">Információ</b></label>
                 <div class="info-card">
-                  <p>Amennyiben elfelejtetted a jelszavad ne aggódj. Az oldalon használt felhasználó neved és email címednek megadásával egy új jelszót küldünk az emailcímedre.</p>
+                  <p>Amennyiben elfelejtetted a jelszavad, ne aggódj. Az email címed megadásával elküldjük a fiókodhoz tartozó jelszót az email címedre.</p>
                 </div>
               </div>              
-              
 
-            <form id="password-reminder">
-                <div class="form-group">
-                    <label for="username"><b>Felhasználónév</b></label>
-                    <input type="text" id="username" name="username" required placeholder="Adja meg a felhasználónevét*">
-                </div>
+            <form id="passwordReminderForm">
                 <div class="form-group">
                     <label for="email"><b>Email cím</b></label>
                     <input type="email" id="email" name="email" required placeholder="Adja meg az email címet*">
@@ -55,32 +52,88 @@
     </main>
 
     <script>
-        document.getElementById('passwordReminderForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
+                document.addEventListener("DOMContentLoaded", function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const role = localStorage.getItem('role') || '';
+            const userId = localStorage.getItem('userId');
 
-            try {
-                const response = await fetch('/api/user/reminder', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email })
-                });
+            // Menü frissítése a bejelentkezési állapot alapján
+            if (isLoggedIn) {
+                // Bejelentkezett felhasználó
+                document.getElementById('loginItem').style.display = 'none';
+                document.getElementById('logoutItem').style.display = 'block';
+                document.getElementById('profileItem').style.display = 'block';
+                document.getElementById('messagesItem').style.display = 'block';
+                document.getElementById('topicsItem').style.display = 'block';
 
-                const data = await response.json();
-                const messageElement = document.getElementById('message');
-                if (response.ok) {
-                    messageElement.textContent = data.message;
-                    messageElement.style.color = 'green';
+                if (role === 'admin') {
+                    document.getElementById('adminPanel').style.display = 'block'; // Admin felület
                 } else {
-                    messageElement.textContent = data.message;
-                    messageElement.style.color = 'red';
+                    document.getElementById('adminPanel').style.display = 'none'; // Nem admin felhasználó
                 }
-            } catch (error) {
-                console.error('Hiba történt a jelszó-emlékeztető kérés során:', error);
-                document.getElementById('message').textContent = 'Hiba történt a jelszó-emlékeztető kérés során.';
+
+                // A Profilom link dinamikusan
+                const domain = "http://localhost:5001/";
+                const profileUrl = `${domain}/profil/${userId}`; // Dinamikusan generált profil URL
+
+                // Frissítjük a Profil linket
+                document.getElementById('profileItem').href = profileUrl;
+            } else {
+                // Nincs bejelentkezett felhasználó
+                document.getElementById('loginItem').style.display = 'block';
+                document.getElementById('logoutItem').style.display = 'none';
+                document.getElementById('profileItem').style.display = 'none';
+                document.getElementById('messagesItem').style.display = 'none';
+                document.getElementById('topicsItem').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'none';
             }
         });
+
+        // Kijelentkezés
+        function logout() {
+            // Beállítjuk a localStorage-t, hogy a felhasználó ki legyen jelentkezve
+            localStorage.setItem('isLoggedIn', 'false');
+            localStorage.removeItem('role'); // Töröljük a szerepkört
+            localStorage.removeItem('userId'); // Töröljük a felhasználó ID-ját
+            // Frissítjük a menüt
+            document.getElementById('loginItem').style.display = 'block';
+            document.getElementById('logoutItem').style.display = 'none';
+            document.getElementById('profileItem').style.display = 'none';
+            document.getElementById('messagesItem').style.display = 'none';
+            document.getElementById('topicsItem').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+
+            alert('Sikeresen kijelentkeztél!');
+            window.location.href = '/fooldal.html';
+        }
+
+        document.getElementById('passwordReminderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const email = document.getElementById('email').value;
+    
+            fetch('http://localhost:5001/api/reminder', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                } else {
+                    alert('Hiba történt a jelszó emlékeztető kérés során.');
+                }
+            })
+            .catch(error => {
+                console.error('Hiba történt:', error);
+                alert('Hiba történt a jelszó emlékeztető kérés során.');
+            });
+        });
     </script>
+    
 
     <footer>
         <div class="contact-section">
