@@ -7,18 +7,17 @@ html, body {
 }
 
 body {
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    margin: 0;
-    background-color: white;
-    position: relative;
-    overflow: hidden;  /*mint az x mint az y tengely görgethetőségét elrejti*/
-    padding: 0;
-    
+ font-family: 'Space Grotesk', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  padding: 0 20px;
 }
 
 body::before {
@@ -35,180 +34,150 @@ body::before {
 }
 
 header {
-  background-color: #283454; /* Sötét kék */
+  background-color: #283454;
   color: white;
-  padding: 20px;
-  width: calc(100% - 40px); /* Teljes szélesség - a padding figyelembevételével */
-  position: fixed; /* A fejléc a lap tetején rögzítve */
-  top: 0; /* A tetejére rögzíti */
-  display: flex; /* Flexbox használata */
-  align-items: center; /* Vertikális középre igazítás */
-  justify-content: space-between; /* Térköz a kép és a középső szöveg között */
-  z-index: 1000; /* A fejléc a legfelső rétegen */
+  padding: 10px 20px;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1.header-title {
-  position: absolute; /* Leválasztja a többi elemtől */
-  left: 50%; /* A bal oldal 50%-a */
-  transform: translateX(-50%); /* Visszahúzza a szöveget a saját közepére */
-  margin: 0;
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center; /* A szöveg középre igazítása */
+header h1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 auto;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
 }
+
 
 #menu-toggle {
-    opacity: 0;
-  }
-  #menu-toggle:checked + .menu-btn > span {
-    transform: rotate(45deg);
-  }
-  #menu-toggle:checked + .menu-btn > span::before {
-    top: 0;
-    transform: rotate(0deg);
-  }
-  #menu-toggle:checked + .menu-btn > span::after {
-    top: 0;
-    transform: rotate(90deg);
-  }
-  #menu-toggle:checked ~ .menu-box {
-    left: 0 !important;
-  }
-  .menu-btn {
-    position: absolute;
-    top: 45%;
-    left: 20px;
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
-    z-index: 1;
-    /*margin: 25px auto;*/
-    
-  }
-  .menu-btn > span,
-  .menu-btn > span::before,
-  .menu-btn > span::after {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #616161;
-    transition-duration: .25s;
-  }
-  .menu-btn > span::before {
-    content: '';
-    top: -8px;
-  }
-  .menu-btn > span::after {
-    content: '';
-    top: 8px;
-  }
-  .menu-box {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 300px;
-    height: 100%;
-    margin: 0;
-    padding: 80px 0;
-    list-style: none;
-    background-color: #ECEFF1;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
-    transition-duration: .25s;
-  }
-  .menu-item {
-    display: block;
-    padding: 12px 24px;
-    color: #333;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: none;
-    transition-duration: .25s;
-  }
-  .menu-item:hover {
-    background-color: #CFD8DC;
-  }
+  opacity: 0;
+}
 
-.navbar {
-  box-shadow: 0px 5px 10px 0px #aaa;
-  position: fixed;
+#menu-toggle:checked + .menu-btn > span {
+  transform: rotate(45deg);
+}
+
+#menu-toggle:checked + .menu-btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+
+#menu-toggle:checked + .menu-btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+#menu-toggle:checked ~ .menu-box {
+  left: 0 !important;
+}
+
+.menu-btn {
+  position: absolute;
+  top: 45%;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.menu-btn > span,
+.menu-btn > span::before,
+.menu-btn > span::after {
+  display: block;
+  position: absolute;
   width: 100%;
-  background: #fff;
-  color: #000;
-  opacity: 0.85;
-  height: 50px;
-  z-index: 12;
+  height: 2px;
+  background-color: #616161;
+  transition-duration: .25s;
 }
 
-.navbar-container {
-  display: flex;
-  justify-content: space-between;
-  height: 64px;
-  align-items: center;
+.menu-btn > span::before {
+  content: '';
+  top: -8px;
 }
+
+.menu-btn > span::after {
+  content: '';
+  top: 8px;
+}
+
+.menu-box {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #ECEFF1;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+}
+
+.menu-item {
+  display: block;
+  padding: 12px 24px;
+  color: #333;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+
+.menu-item:hover {
+  background-color: #CFD8DC;
+}
+
+
 
 .menu-items {
-  order: 2;
-  display: flex;
+order: 2;
+display: flex;
 }
 
 .menu-items li {
-  list-style: none;
-  margin-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+list-style: none;
+margin-left: 1.5rem;
+margin-bottom: 0.5rem;
+font-size: 1.2rem;
 }
 
 .menu-items a {
-  text-decoration: none;
-  color: #444;
-  font-weight: 500;
-  transition: color 0.3s ease-in-out;
+text-decoration: none;
+color: #444;
+font-weight: 500;
+transition: color 0.3s ease-in-out;
 }
 
 .menu-items a:hover {
-  color: #117964;
-  transition: color 0.3s ease-in-out;
+color: #117964;
+transition: color 0.3s ease-in-out;
 }
 
-.tema {
-    text-align: center;
-    font-size: 20px;
-    margin: 0 auto;
-}
-
-
-
-.hirek li {
-    border:1px solid blue;
-    margin: 10px 5px;
-    border-radius: 10px;
-    
-}
-
-.logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 20px;
-}
-
-.login-item {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
 
 main {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  margin-top: 100px;
-  width: 100%;
-  padding: 15px;
-  flex-grow: 1;
+  justify-content: center;
+  margin-top: 0px; /* A fejléc magasságának csökkentése */
+  width: 100%; /* Teljes szélesség */
+  padding: 0 20px; /* Oldalsó padding */
+  flex-grow: 1; /* A main szekció kitölti a középső területet */
+  flex-direction: column; /* Függőleges elrendezés a keresősáv és a grid számára */
 }
 
 form {
@@ -289,20 +258,16 @@ form textarea {
 
 
 footer {
-  background-color: #283454; /* Sötét kék */
+  background-color: #283454;
   color: white;
-  padding: 20px; /* Térköz a footer tartalmán belül */
-  width: 100%; /* Teljes szélesség */
-  height: 35px;
-  display: flex; /* Flexbox a footerben */
-  justify-content: space-between; /* Balra és jobbra igazítás */
-  align-items: center; /* Középre igazítás vertikálisan */
-  position: relative; /* Rögzítési pozíció */
-  bottom: 0; /* Az aljára rögzítése */
-  flex-shrink: 0; /* Footer nem zsugorodik össze */
+  padding: 10px 20px;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Balra igazítás */
+  z-index: 1000;
 }
-
-  .contact-section h2, p {
-    padding-left: 15px;
-  }
 
