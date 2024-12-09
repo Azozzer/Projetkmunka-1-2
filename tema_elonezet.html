@@ -4,52 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tema_elo.css">
-    <title>SZE Tanulmányi Fórum - Profil</title>
+    <title>SZE Tanulmányi Fórum - Téma Előnézet</title>
 </head>
 <body>
     <header>
-        
         <div class="hamburger-menu">
             <input id="menu-toggle" type="checkbox" />
             <label class="menu-btn" for="menu-toggle">
                 <span></span>
             </label>
             <ul class="menu-box">
-                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
-                <li><a class="menu-item" href="#" onclick="window.location.href='profil.html';">Profilom</a></li>
-                <li><a class="menu-item" href="#">Services</a></li>
-                <li><a class="menu-item" href="#">Contact</a></li>
+                <li><a class="menu-item" href="fooldal.html">Főoldal</a></li>
+                <li id="loginItem"><a class="menu-item" href="login.html">Bejelentkezés</a></li>
+                <li id="logoutItem" style="display:none;"><a class="menu-item" href="#" onclick="logout()">Kijelentkezés</a></li>
+                <li id="profileItem" style="display:none;"><a class="menu-item" href="#">Profilom</a></li>
+                <li id="messagesItem" style="display:none;"><a class="menu-item" href="#">Üzenetek</a></li>
+                <li id="topicsItem" style="display:none;"><a class="menu-item" href="#">Témáim</a></li>
+                <li id="adminPanel" style="display:none;"><a class="menu-item" href="#">Adminisztrátori Panel</a></li>
             </ul>
-
-          </div>
-        
+        </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
-
-        
     </header>
 
     <main>
         <div class="temabox">
-            <h2>Téma előnézet</h2>
-            <div class="adatok">
-                <p> <b>Téma neve: </b>Kiskacsák szaporodása</p>
-                <p><b>Téma leírása:</b></p>
-                <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Feugiat sollicitudin metus dictumst elit per litora eros. Accumsan donec parturient taciti ligula mus malesuada lorem duis leo. Per consectetur cras accumsan varius mi nec ex tincidunt. At class facilisi nullam, quis ipsum primis enim. Pretium cursus sapien interdum molestie elit gravida conubia.
-
-                    Morbi posuere elit dictum eros; tincidunt molestie diam. Arcu nostra etiam molestie varius condimentum a eu. Tempus nam pulvinar imperdiet id, molestie est dapibus. Molestie diam etiam mauris tristique quam. Suspendisse semper dictum tortor augue justo ac. Natoque class lacinia ullamcorper quisque orci per varius. Montes venenatis efficitur risus habitasse nam?                    
-                    </p>
-                <p><b>Feltöltött fájl: </b><u>esk.png</u></p>
-                <div class="button-container">
-                    <button onclick="window.location.href='lista.html';">Vissza</button>  <!--Ha rányomunk, akkor vissza visz arra az oldalra, ahol előzetesen voltunk-->
-                    <button onclick="window.location.href='targyak.html';">Szerkesztés</button>
-                </div>
-                
+            <div class="adatok" id="temaAdatok">
+                <!-- Téma adatai itt jelennek meg -->
             </div>
         </div>
-
     </main>
-
-
 
     <footer>
         <div class="contact-section">
@@ -57,5 +40,87 @@
             <p>Email: asdasd@sze.hu</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const role = localStorage.getItem('role') || '';
+            const userId = localStorage.getItem('userId'); 
+
+            // Menü frissítése a bejelentkezési állapot alapján
+            if (isLoggedIn) {
+                // Bejelentkezett felhasználó
+                document.getElementById('loginItem').style.display = 'none';
+                document.getElementById('logoutItem').style.display = 'block';
+                document.getElementById('profileItem').style.display = 'block';
+                document.getElementById('messagesItem').style.display = 'block';
+                document.getElementById('topicsItem').style.display = 'block';
+
+                if (role === 'admin') {
+                    document.getElementById('adminPanel').style.display = 'block'; // Admin felület
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none'; // Nem admin felhasználó
+                }
+
+                // A Profilom link dinamikusan
+                const domain = "http://localhost:5001/";
+                const profileUrl = `${domain}/profil/${userId}`; // Dinamikusan generált profil URL
+
+                // Frissítjük a Profil linket
+                document.getElementById('profileItem').href = profileUrl;
+            } else {
+                // Nincs bejelentkezett felhasználó
+                document.getElementById('loginItem').style.display = 'block';
+                document.getElementById('logoutItem').style.display = 'none';
+                document.getElementById('profileItem').style.display = 'none';
+                document.getElementById('messagesItem').style.display = 'none';
+                document.getElementById('topicsItem').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'none';
+            }
+        });
+
+        // Kijelentkezés
+        function logout() {
+            // Beállítjuk a localStorage-t, hogy a felhasználó ki legyen jelentkezve
+            localStorage.setItem('isLoggedIn', 'false');
+            localStorage.removeItem('role'); // Töröljük a szerepkört
+            localStorage.removeItem('userId'); // Töröljük a felhasználó ID-ját
+            // Frissítjük a menüt
+            document.getElementById('loginItem').style.display = 'block';
+            document.getElementById('logoutItem').style.display = 'none';
+            document.getElementById('profileItem').style.display = 'none';
+            document.getElementById('messagesItem').style.display = 'none';
+            document.getElementById('topicsItem').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+
+            alert('Sikeresen kijelentkeztél!');
+            window.location.href = '/fooldal.html';
+        }
+
+        function loadTemaDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const temaId = params.get('id');
+    
+            fetch(`http://localhost:5001/api/topic/${temaId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const temaDetailDiv = document.getElementById('temaAdatok');
+                    temaDetailDiv.innerHTML = `
+                        <h1>${data.title}</h1>
+                        <p><b>Leírás:</b> ${data.description}</p>
+                        ${data.file ? `<a href="${data.file}" target="_blank" download>Csatolt fájl</a>` : '<p>Nincs fájl csatolva.</p>'}
+                        <div class="button-container">
+                            <button onclick="window.location.href='lista.html';">Vissza</button>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Hiba a téma részleteinek betöltésekor:', error);
+                });
+        }
+    
+        document.addEventListener("DOMContentLoaded", loadTemaDetails);
+    </script>
+    
 </body>
 </html>
