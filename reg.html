@@ -15,10 +15,13 @@
                 <span></span>
             </label>
             <ul class="menu-box">
-                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
-                <li><a class="menu-item" href="#" onclick="window.location.href='login.html';">Bejelentkezés</a></li>
-                <li><a class="menu-item" href="#">Services</a></li>
-                <li><a class="menu-item" href="#">Contact</a></li>
+                <li><a class="menu-item" href="fooldal.html">Főoldal</a></li>
+                <li id="loginItem"><a class="menu-item" href="login.html">Bejelentkezés</a></li>
+                <li id="logoutItem" style="display:none;"><a class="menu-item" href="#" onclick="logout()">Kijelentkezés</a></li>
+                <li id="profileItem" style="display:none;"><a class="menu-item" href="#">Profilom</a></li>
+                <li id="messagesItem" style="display:none;"><a class="menu-item" href="#">Üzenetek</a></li>
+                <li id="topicsItem" style="display:none;"><a class="menu-item" href="#">Témáim</a></li>
+                <li id="adminPanel" style="display:none;"><a class="menu-item" href="#">Adminisztrátori Panel</a></li>
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
@@ -27,26 +30,30 @@
     <main>
         <div class="login-form">
             <h2>Regisztráció</h2>
-            <form id="registrationForm" action="profil.html" method="post">
+            <div class="info-container">
+                <input type="checkbox" id="info-toggle" class="info-toggle">
+                <label for="info-toggle" class="info-trigger"><b><img src="information.png" class="ikon">Információ</b></label>
+                <div class="info-card">
+                    <p>Jelszó megadásánál használj erős jelszót. Milyen egy erős jelszó? Tartalmaz kis és nagybetűket, számot és speciális karaktert is.</p>
+                </div>
+            </div>
+
+            <form id="registrationForm" action="#" method="post">
                 <div class="form-group">
                     <label for="new-username"><b>Felhasználónév</b></label>
                     <input type="text" id="new-username" name="username" required placeholder="Válassz felhasználónevet*">
-                    <span class="tooltip">Példa: forum_user123</span>
                 </div>
                 <div class="form-group">
                     <label for="new-password"><b>Jelszó</b></label>
                     <input type="password" id="new-password" name="password" required placeholder="Válassz jelszót*">
-                    <span class="tooltip">Tipp: Használj számot, speciális karaktert, kis és nagybetűket</span>
                 </div>
                 <div class="form-group">
                     <label for="confirm-password"><b>Jelszó megerősítése</b></label>
                     <input type="password" id="confirm-password" name="confirm_password" required placeholder="Erősítse meg a jelszót*">
-                    <span class="tooltip">Tipp: Az előzőleg megadott jelszót erősítsd meg.</span>
                 </div>
                 <div class="form-group">
                     <label for="email"><b>Email cím</b></label>
                     <input type="email" id="email" name="email" required placeholder="Adja meg az email címét*">
-                    <span class="tooltip">Példa: pelda.peter@pelda.com</span>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="login-button">Regisztráció</button>
@@ -59,29 +66,94 @@
     </main>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const role = localStorage.getItem('role') || '';
+            const userId = localStorage.getItem('userId'); 
+
+            // Menü frissítése a bejelentkezési állapot alapján
+            if (isLoggedIn) {
+                // Bejelentkezett felhasználó
+                document.getElementById('loginItem').style.display = 'none';
+                document.getElementById('logoutItem').style.display = 'block';
+                document.getElementById('profileItem').style.display = 'block';
+                document.getElementById('messagesItem').style.display = 'block';
+                document.getElementById('topicsItem').style.display = 'block';
+
+                if (role === 'admin') {
+                    document.getElementById('adminPanel').style.display = 'block'; // Admin felület
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none'; // Nem admin felhasználó
+                }
+
+                // A Profilom link dinamikusan
+                const domain = "http://localhost:5001/";
+                const profileUrl = `${domain}/profil/${userId}`; // Dinamikusan generált profil URL
+
+                // Frissítjük a Profil linket
+                document.getElementById('profileItem').href = profileUrl;
+            } else {
+                // Nincs bejelentkezett felhasználó
+                document.getElementById('loginItem').style.display = 'block';
+                document.getElementById('logoutItem').style.display = 'none';
+                document.getElementById('profileItem').style.display = 'none';
+                document.getElementById('messagesItem').style.display = 'none';
+                document.getElementById('topicsItem').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'none';
+            }
+        });
+
+        // Kijelentkezés
+        function logout() {
+            // Beállítjuk a localStorage-t, hogy a felhasználó ki legyen jelentkezve
+            localStorage.setItem('isLoggedIn', 'false');
+            localStorage.removeItem('role'); // Töröljük a szerepkört
+            localStorage.removeItem('userId'); // Töröljük a felhasználó ID-ját
+            // Frissítjük a menüt
+            document.getElementById('loginItem').style.display = 'block';
+            document.getElementById('logoutItem').style.display = 'none';
+            document.getElementById('profileItem').style.display = 'none';
+            document.getElementById('messagesItem').style.display = 'none';
+            document.getElementById('topicsItem').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+
+            alert('Sikeresen kijelentkeztél!');
+            window.location.href = '/fooldal.html';
+        }
+
         document.getElementById("registrationForm").addEventListener("submit", function(event) {
             event.preventDefault();
 
+            // Adatok összegyűjtése az űrlapról
             const userData = {
                 username: document.getElementById("new-username").value,
                 email: document.getElementById("email").value,
-                password: document.getElementById("new-password").value
+                password: document.getElementById("new-password").value,
+                confirm_password: document.getElementById("confirm-password").value
             };
 
-            fetch("https://localhost:5001/api/user/register", {
-                method: "POST",
+            // Adatok küldése a backend-nek fetch használatával
+            fetch("http://localhost:5001/api/user/reg", {  // A backend API URL-je
+                method: "POST",  // POST kérés
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json"  // Az adat formátuma JSON
                 },
-                body: JSON.stringify(userData)
+                body: JSON.stringify(userData)  // A JSON formátumú adatok
             })
-            .then(response => response.json())
+            .then(response => response.json())  // A válasz JSON feldolgozása
             .then(data => {
-                console.log("Siker:", data);
-                alert(data.message);
+                console.log("Siker:", data);  // Sikeres válasz
+                if (data.message) {
+                    alert(data.message);  // Sikerüzenet
+                    if (data.success) {
+                        window.location.href = "profil.html";  // A felhasználó átirányítása a profil oldalra
+                    }
+                } else {
+                    alert("Hiba történt a regisztráció során: " + data.message);  // Hibakezelés
+                }
             })
             .catch((error) => {
-                console.error("Hiba:", error);
+                console.error("Hiba:", error);  // Hiba a kérés során
                 alert("Hiba történt a regisztráció során.");
             });
         });
@@ -95,3 +167,4 @@
     </footer>
 </body>
 </html>
+
