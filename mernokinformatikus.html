@@ -15,23 +15,23 @@
                 <span></span>
             </label>
             <ul class="menu-box">
-                <li><a class="menu-item" href="#" onclick="window.location.href='fooldal.html';">Főoldal</a></li>
-                <li><a class="menu-item" href="#" onclick="window.location.href='login.html';">Bejelentkezés</a></li>
-                <li><a class="menu-item" href="#">Services</a></li>
-                <li><a class="menu-item" href="#">Contact</a></li>
+                <li><a class="menu-item" href="fooldal.html">Főoldal</a></li>
+                <li id="loginItem"><a class="menu-item" href="login.html">Bejelentkezés</a></li>
+                <li id="logoutItem" style="display:none;"><a class="menu-item" href="#" onclick="logout()">Kijelentkezés</a></li>
+                <li id="profileItem" style="display:none;"><a class="menu-item" href="#">Profilom</a></li>
+                <li id="messagesItem" style="display:none;"><a class="menu-item" href="#">Üzenetek</a></li>
+                <li id="topicsItem" style="display:none;"><a class="menu-item" href="#">Témáim</a></li>
+                <li id="adminPanel" style="display:none;"><a class="menu-item" href="#">Adminisztrátori Panel</a></li>
             </ul>
         </div>
         <h1 class="header-title">SZE Tanulmányi Fórum</h1>
-        <nav>
-            
-        </nav>
     </header>
 
     <main>
         <!-- Kereső sáv -->
         <div class="search-bar">
             <input type="text" placeholder="Keresendő téma..." id="searchInput">
-            <button>Keresés</button>
+            <button onclick="searchCourses()">Keresés</button>
         </div>
 
         <div class="grid">
@@ -47,5 +47,69 @@
             <p>Email: asdasd@sze.hu</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            const role = localStorage.getItem('role') || '';
+            const userId = localStorage.getItem('userId'); 
+
+            // Menü frissítése a bejelentkezési állapot alapján
+            if (isLoggedIn) {
+                // Bejelentkezett felhasználó
+                document.getElementById('loginItem').style.display = 'none';
+                document.getElementById('logoutItem').style.display = 'block';
+                document.getElementById('profileItem').style.display = 'block';
+                document.getElementById('messagesItem').style.display = 'block';
+                document.getElementById('topicsItem').style.display = 'block';
+
+                if (role === 'admin') {
+                    document.getElementById('adminPanel').style.display = 'block'; // Admin felület
+                } else {
+                    document.getElementById('adminPanel').style.display = 'none'; // Nem admin felhasználó
+                }
+
+                // A Profilom link dinamikusan
+                const domain = "http://localhost:5001/";
+                const profileUrl = `${domain}/profil/${userId}`; // Dinamikusan generált profil URL
+
+                // Frissítjük a Profil linket
+                document.getElementById('profileItem').href = profileUrl;
+            } else {
+                // Nincs bejelentkezett felhasználó
+                document.getElementById('loginItem').style.display = 'block';
+                document.getElementById('logoutItem').style.display = 'none';
+                document.getElementById('profileItem').style.display = 'none';
+                document.getElementById('messagesItem').style.display = 'none';
+                document.getElementById('topicsItem').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'none';
+            }
+        });
+
+        // Kijelentkezés
+        function logout() {
+            // Beállítjuk a localStorage-t, hogy a felhasználó ki legyen jelentkezve
+            localStorage.setItem('isLoggedIn', 'false');
+            localStorage.removeItem('role'); // Töröljük a szerepkört
+            localStorage.removeItem('userId'); // Töröljük a felhasználó ID-ját
+            // Frissítjük a menüt
+            document.getElementById('loginItem').style.display = 'block';
+            document.getElementById('logoutItem').style.display = 'none';
+            document.getElementById('profileItem').style.display = 'none';
+            document.getElementById('messagesItem').style.display = 'none';
+            document.getElementById('topicsItem').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
+
+            alert('Sikeresen kijelentkeztél!');
+            window.location.href = '/fooldal.html';
+        }
+
+        // Keresési funkció
+        function searchCourses() {
+            const query = document.getElementById('searchInput').value;
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = `<p>Keresési kifejezés: ${query}</p>`;
+        }
+    </script>
 </body>
 </html>
