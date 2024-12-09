@@ -32,24 +32,28 @@ body::before {
 }
 
 header {
-  background-color: #283454; /* Sötét kék */
+  background-color: #283454;
   color: white;
-  padding: 10px 0;
+  padding: 10px 20px;
   width: 100%;
-  height: 60px; /* Increased height for a better look */
+  height: 60px;
   position: fixed;
   top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1.header-title {
-  font-size: 24px;
-  font-weight: 700;
+header h1 {
+  font-size: 20px;
+  font-weight: bold;
   text-align: center;
-  flex-grow: 1;
+  margin: 0 auto;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
 }
 
 .logo {
